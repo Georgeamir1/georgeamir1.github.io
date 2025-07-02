@@ -693,33 +693,37 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My Skills</h2>
                 <div class="w-20 h-2 rounded-full mx-auto gradient-flow"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+                    Here are the tools, languages, and frameworks I use to build beautiful, high-performance apps.
+                </p>
             </div>
-            
             <div class="glass-bg rounded-3xl p-8 md:p-12 overflow-hidden relative">
                 <!-- Floating elements -->
                 <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-purple-400 opacity-10 floating" style="animation-delay: 1s;"></div>
                 <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 2s;"></div>
-                
-                <div class="relative z-10">
-                    <div class="mb-8">
+                <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                             <i class="fas fa-cubes text-indigo-600 mr-3"></i> Frameworks & Languages
                         </h3>
-                        <div class="flex flex-col gap-2 mb-4">
-                            <div>
-                                <span class="font-semibold text-gray-700 mr-2">Frameworks:</span>
-                                <span class="px-4 py-2 rounded-full glass-btn">Flutter</span>
-                            </div>
-                            <div>
-                                <span class="font-semibold text-gray-700 mr-2">Languages:</span>
-                                <span class="px-4 py-2 rounded-full glass-btn">Dart</span>
-                                <span class="px-4 py-2 rounded-full glass-btn">C++</span>
-                                <span class="px-4 py-2 rounded-full glass-btn">Python</span>
-                                <span class="px-4 py-2 rounded-full glass-btn">Java</span>
-                            </div>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <span class="px-4 py-2 rounded-full glass-btn">Flutter</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Dart</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Python</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">C++</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Java</span>
                         </div>
-                    </div>
-                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-bolt text-indigo-600 mr-3"></i> Advanced Flutter Skills
+                        </h3>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <span class="px-4 py-2 rounded-full glass-btn">Clean Architecture</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Responsive & Adaptive Design</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Localization (i18n)</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Animations & Motion Design</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Firebase Integration</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Performance Optimization</span>
+                        </div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                             <i class="fas fa-layer-group text-indigo-600 mr-3"></i> State Management
                         </h3>
@@ -728,61 +732,34 @@
                             <span class="px-4 py-2 rounded-full glass-btn">Provider</span>
                             <span class="px-4 py-2 rounded-full glass-btn">Getx</span>
                         </div>
-                    </div>
-                    <div class="mb-8">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                             <i class="fas fa-network-wired text-indigo-600 mr-3"></i> Networking & APIs
                         </h3>
                         <div class="flex flex-wrap gap-3 mb-4">
                             <span class="px-4 py-2 rounded-full glass-btn">Dio</span>
                             <span class="px-4 py-2 rounded-full glass-btn">Http</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Restful API</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Rpc</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">RESTful API</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">RPC</span>
                         </div>
                     </div>
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                            <img src="https://www.svgrepo.com/show/373604/flutter.svg" alt="Flutter" class="inline-block mr-3" style="height: 1.5em; vertical-align: middle;">
-                            Advanced Flutter Skills
-                        </h3>
-                        <div class="flex flex-wrap gap-3 mb-4">
-                            <span class="px-4 py-2 rounded-full glass-btn">Flutter Testing</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Flutter Clean Architecture</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Custom Widgets Development</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Responsive & Adaptive Design</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Flutter Localization (i18n)</span>
-                        </div>
-                    </div>
-                    <div class="mb-8">
+                    <div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                             <i class="fas fa-paint-brush text-indigo-600 mr-3"></i> UI/UX & Design Tools
                         </h3>
                         <div class="flex flex-wrap gap-3 mb-4">
-                            <span class="px-4 py-2 rounded-full glass-btn">UI/UX Design (Figma)</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Figma</span>
                             <span class="px-4 py-2 rounded-full glass-btn">Photoshop</span>
                         </div>
-                    </div>
-                    <div class="mb-8">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-code text-indigo-600 mr-3"></i> Programming Languages
-                        </h3>
-                        <div class="flex flex-wrap gap-3 mb-4">
-                            <span class="px-4 py-2 rounded-full glass-btn">Python</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">C++</span>
-                            <span class="px-4 py-2 rounded-full glass-btn">Java</span>
-                        </div>
-                    </div>
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-lightbulb text-indigo-600 mr-3"></i> Other Knowledge
+                            <i class="fas fa-code text-indigo-600 mr-3"></i> Other Knowledge
                         </h3>
                         <div class="flex flex-wrap gap-3 mb-4">
                             <span class="px-4 py-2 rounded-full glass-btn">IoT</span>
                             <span class="px-4 py-2 rounded-full glass-btn">Video Editing</span>
                             <span class="px-4 py-2 rounded-full glass-btn">Hardware Components</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Git</span>
+                            <span class="px-4 py-2 rounded-full glass-btn">Firebase</span>
                         </div>
-                    </div>
-                    <div>
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
                             <i class="fas fa-language text-indigo-600 mr-3"></i> Languages
                         </h3>
@@ -816,15 +793,14 @@
                     <!-- Project Filter -->
                     <div class="flex flex-wrap justify-center mb-12 gap-3">
                         <button class="px-4 py-2 rounded-full glass-btn glass-btn-primary filter-btn" data-filter="all">All Projects</button>
-                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="mobile">Mobile Apps</button>
-                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="web">Web Apps</button>
-                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="ui">UI/UX</button>
+                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="ui">UI/UX Design</button>
+                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="inprogress">In Progress</button>
                     </div>
                     
                     <!-- Projects Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Project 1: Etamin UI -->
-                        <div class="project-card glass-card" data-category="mobile">
+                        <div class="project-card glass-card" data-category="ui">
                             <img src="assets/etamim/cover.png"
                                  alt="Etamin UI"
                                  class="w-full h-full object-cover" loading="lazy">
@@ -839,7 +815,7 @@
                                 <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project1">View Details</button>
                             </div>
                         </div>
-                        <!-- Project 2: Casty UI -->
+                        <!-- Project 2: Casty UI (UI/UX only) -->
                         <div class="project-card glass-card" data-category="ui">
                             <img src="assets/casty/logo.png"
                                  alt="Casty UI"
@@ -872,8 +848,8 @@
                         </div>
                         <!-- Project 4: Pinion CRM -->
                         <div class="project-card glass-card" data-category="mobile">
-                            <img src="https://images.unsplash.com/photo-1557804506-669a67965da9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                                 alt="Pinion CRM"
+                            <img src="assets/pinion crm/logo.png"
+                                 alt="Pinion CRM Thumbnail"
                                  class="w-full h-full object-cover" loading="lazy">
                             <div class="project-overlay">
                                 <h3 class="text-xl font-bold text-white mb-2">Pinion CRM</h3>
@@ -887,21 +863,23 @@
                         </div>
                         <!-- Project 5: Perfect Solution -->
                         <div class="project-card glass-card" data-category="mobile">
-                            <img src="assets/perfect solution/logo.png"
-                                 alt="Perfect Solution"
+                            <img src="assets/perfect solution/logo.jpg"
+                                 alt="Perfect Solution Thumbnail"
                                  class="w-full h-full object-cover" loading="lazy">
                             <div class="project-overlay">
                                 <h3 class="text-xl font-bold text-white mb-2">Perfect Solution</h3>
                                 <div class="flex flex-wrap mb-3">
                                     <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
                                     <span class="project-tag bg-blue-100 text-blue-800">Odoo</span>
+                                    <span class="project-tag bg-blue-100 text-green-800">ERP</span>
+                                    
                                 </div>
                                 <p class="text-gray-200 text-sm mb-4">A powerful Flutter-based mobile integrated with Odoo ERP via Odoo RPC, featuring secure authentication, real-time data sync, CRUD operations, Optimized with flutter_bloc for performance.</p>
                                 <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project5">View Details</button>
                             </div>
                         </div>
-                        <!-- Project 6: Lotus CRM -->
-                        <div class="project-card glass-card" data-category="mobile">
+                        <!-- Project 6: Lotus CRM (in progress) -->
+                        <div class="project-card glass-card" data-category="inprogress">
                             <img src="assets/loutus/logo.png"
                                  alt="Lotus CRM"
                                  class="w-full h-full object-cover" loading="lazy">
@@ -910,13 +888,14 @@
                                 <div class="flex flex-wrap mb-3">
                                     <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
                                     <span class="project-tag bg-green-100 text-green-800">Health</span>
+                                    <span class="project-tag bg-yellow-100 text-yellow-800">In Progress</span>
                                 </div>
                                 <p class="text-gray-200 text-sm mb-4">A HIPAA-compliant platform designed to streamline patient care, staff workflows, and hospital operations. Manage medical records, track inventory, automate billing, and coordinate multi-department workflows securely—all through an intuitive interface. <span class="font-bold">Elevate efficiency while prioritizing patient outcomes and compliance. <span class="italic">Transform healthcare management today.</span></span></p>
                                 <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project6">View Details</button>
                             </div>
                         </div>
-                        <!-- Project 7: Moon academy -->
-                        <div class="project-card glass-card" data-category="web">
+                        <!-- Project 7: Moon academy (in progress) -->
+                        <div class="project-card glass-card" data-category="inprogress">
                             <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                  alt="Moon academy"
                                  class="w-full h-full object-cover" loading="lazy">
@@ -926,12 +905,12 @@
                                     <span class="project-tag bg-indigo-100 text-indigo-800">Education</span>
                                     <span class="project-tag bg-blue-100 text-blue-800">Web</span>
                                 </div>
-                                <p class="text-gray-200 text-sm mb-4">Moon Academy is an educational platform designed to make learning accessible and engaging for a diverse audience. The project focuses on delivering a user-friendly experience, supporting multiple languages, and providing a welcoming environment for users to explore courses and educational content. The platform emphasizes inclusivity, ease of use, and adaptability across various devices.</p>
-                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project7">View Details</button>
+                                <p class="text-gray-200 text-sm mb-4">Moon Academy is an educational platform designed to make learning accessible and engaging for a diverse audience. The project focuses on delivering a user-friendly experience, supporting multiple languages, and providing a welcoming environment for users to explore courses and educational content. The platform emphasizes inclusivity, ease of use, and adaptability across various devices.
+                                <span class="project-tag bg-yellow-100 text-yellow-800">In Progress</span>
                             </div>
                         </div>
-                        <!-- Project 8: Ne_angilos -->
-                        <div class="project-card glass-card" data-category="web">
+                        <!-- Project 8: Ne_angilos (in progress) -->
+                        <div class="project-card glass-card" data-category="inprogress">
                             <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                  alt="Ne_angilos"
                                  class="w-full h-full object-cover" loading="lazy">
@@ -941,8 +920,8 @@
                                     <span class="project-tag bg-indigo-100 text-indigo-800">Digital</span>
                                     <span class="project-tag bg-green-100 text-green-800">Community</span>
                                 </div>
-                                <p class="text-gray-200 text-sm mb-4">Neangilos is a comprehensive digital platform designed to enhance communication, organization, and management among members of educational communities. The application streamlines daily operations and improves engagement among students, educators, and administrators.</p>
-                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project8">View Details</button>
+                                <p class="text-gray-200 text-sm mb-4">Neangilos is a comprehensive digital platform designed to enhance communication, organization, and management among members of educational communities. The application streamlines daily operations and improves engagement among students, educators, and administrators.
+                                <span class="project-tag bg-yellow-100 text-yellow-800">In Progress</span>
                             </div>
                         </div>
                     </div>
@@ -1215,12 +1194,47 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="md:flex">
-                <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965da9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                         alt="Pinion CRM"
-                         class="w-full h-full object-cover">
+                <div class="md:w-1/2 p-8 flex items-center justify-center">
+                    <div class="image-slider overflow-hidden rounded-lg h-full w-full">
+                        <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-42-08-44_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 1" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-04-55_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 2" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-08-13_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 3" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-13-82_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 4" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-20-01_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 5" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-23-49_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 6" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-40-19.jpg" alt="Screenshot 7" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-51-70_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 8" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-44-33-56.jpg" alt="Screenshot 9" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-44-38-91_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 10" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-46-01-03_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 11" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-46-18-66_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 12" class="flex-shrink-0">
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-1/2 p-8">
+                
+                <div class="md:w-1/2 p-8 flex flex-col items-start">
+                    <img src="assets/pinion crm/logo.png" alt="Pinion CRM Logo" class="w-50 h-50 object-contain mb-4 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Pinion CRM</h3>
                     <div class="flex flex-wrap gap-2 mb-6">
                         <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
@@ -1231,23 +1245,6 @@
                     <p class="text-gray-600 mb-6">
                         Pinion CRM is a user-friendly customer relationship management application designed to streamline business operations. It provides easy access to customer data and intuitive navigation to help businesses efficiently manage customers, sales, stock, and locations.
                     </p>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Key Features:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2">
-                        <li>Customer data management</li>
-                        <li>Sales tracking</li>
-                        <li>Stock management</li>
-                        <li>Location tracking</li>
-                        <li>Intuitive navigation</li>
-                        <li>Streamlined business operations</li>
-                    </ul>
-                    <div class="flex space-x-4">
-                        <a href="#" class="px-4 py-2 rounded-lg glass-btn glass-btn-primary">
-                            <i class="fab fa-github mr-2"></i> View Code (Placeholder)
-                        </a>
-                        <a href="#" class="px-4 py-2 rounded-lg glass-btn">
-                            <i class="fas fa-external-link-alt mr-2"></i> Live Demo (Placeholder)
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1258,8 +1255,8 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="md:flex">
-                <div class="md:w-1/2 p-8 flex items-center justify-center">
-                    <div class="image-slider overflow-hidden rounded-lg h-full">
+                <div class="md:w-1/2 p-8 flex flex-col items-center justify-center">
+                    <div class="image-slider overflow-hidden rounded-lg h-full w-full">
                         <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
                             <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-41-22_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 1" class="flex-shrink-0">
                             <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-44-87_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 2" class="flex-shrink-0">
@@ -1299,10 +1296,13 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 p-8">
+                    <img src="assets/perfect solution/logo.jpg" alt="Perfect Solution Logo" class="w-50 h-50 object-contain mb-4 rounded-lg shadow-lg">
+
                     <h3 class="text-2xl font-bold text-white mb-4">Perfect Solution</h3>
                     <div class="flex flex-wrap gap-2 mb-6">
                         <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
                         <span class="project-tag bg-blue-100 text-blue-800">Odoo</span>
+                        <span class="project-tag bg-blue-100 text-green-800">ERP</span>
                     </div>
                     <p class="text-gray-600 mb-6">
                         A powerful Flutter-based mobile integrated with Odoo ERP via Odoo RPC, featuring secure authentication, real-time data sync, CRUD operations, Optimized with flutter_bloc for performance.
@@ -1349,6 +1349,7 @@
                 <div class="md:w-1/2 p-8">
                     <h3 class="text-2xl font-bold text-white mb-4">Lotus CRM</h3>
                     <div class="flex flex-wrap gap-2 mb-6">
+                    <img src="assets/loutus/logo.png" alt="Lotus CRM Logo" class="w-45 h-45 object-contain mb-4 rounded-lg shadow-lg">
                         <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
                         <span class="project-tag bg-green-100 text-green-800">Health</span>
                     </div>
@@ -1568,31 +1569,7 @@
                     </div>
                     <!-- Contact Form -->
                     <div class="md:w-2/3">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
-                        <form id="contact-form" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-gray-600 mb-2">Your Name</label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-xl glass-input focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-gray-600 mb-2">Your Email</label>
-                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-xl glass-input focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="subject" class="block text-gray-600 mb-2">Subject</label>
-                                <input type="text" id="subject" class="w-full px-4 py-3 rounded-xl glass-input focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-gray-600 mb-2">Message</label>
-                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-xl glass-input focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
-                            </div>
-                            <button type="submit" class="px-6 py-3 rounded-xl font-medium glass-btn glass-btn-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                                Send Message <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
-                            <p id="form-message" class="hidden text-green-600 mt-4">Thank you! Your message has been sent.</p>
-                        </form>
+                        <!-- Removed the Send Me a Message form as requested -->
                     </div>
                 </div>
             </div>
@@ -1790,11 +1767,15 @@
         // Initialize particles
         window.addEventListener('load', createParticles);
         // Contact form feedback
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('form-message').classList.remove('hidden');
-            this.reset();
-        });
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // Let the form submit normally, but show a thank you message after redirect
+                setTimeout(() => {
+                    document.getElementById('form-message').classList.remove('hidden');
+                }, 100);
+            });
+        }
 
         function initSlider(modal) {
             const slider = modal.querySelector('.slider-container');
