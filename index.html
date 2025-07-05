@@ -530,6 +530,445 @@
           -webkit-text-size-adjust: 100%;
           text-size-adjust: 100%;
         }
+
+        /* Mobile-First Responsive Design */
+        @media screen and (max-width: 768px) {
+            /* Base Mobile Styles */
+            body {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+
+            /* Typography - Smaller fonts for mobile */
+            h1 {
+                font-size: 1.75rem !important; /* ~28px */
+                line-height: 1.2;
+                margin-bottom: 0.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem !important; /* ~24px */
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem !important; /* ~20px */
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 0.875rem !important; /* ~14px */
+                line-height: 1.5;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Navigation adjustments */
+            .max-w-7xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+
+            nav .flex.h-16 {
+                height: 3.5rem; /* Smaller nav height */
+            }
+
+            nav .text-xl {
+                font-size: 1.125rem !important; /* Smaller logo text */
+            }
+
+            /* Hero section mobile optimization */
+            #home {
+                padding-top: 4rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            #home .glass-bg {
+                padding: 1rem !important;
+                margin: 0 0.5rem;
+            }
+
+            #home h1 {
+                font-size: 1.75rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            #home h2 {
+                font-size: 1.25rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            #home p {
+                font-size: 0.875rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Profile image mobile sizing */
+            #home .w-40.h-40 {
+                width: 8rem !important;
+                height: 8rem !important;
+            }
+
+            /* Button adjustments */
+            .glass-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .glass-btn-primary {
+                padding: 0.75rem 1.25rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            /* Section spacing */
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            .glass-bg {
+                padding: 1.5rem !important;
+                margin: 0 0.5rem;
+            }
+
+            /* Project cards mobile optimization */
+            .project-card {
+                height: 250px !important;
+            }
+
+            .project-overlay {
+                padding: 1rem !important;
+            }
+
+            .project-overlay h3 {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .project-overlay p {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            .project-tag {
+                padding: 0.125rem 0.5rem !important;
+                font-size: 0.65rem !important;
+                margin-right: 0.25rem !important;
+                margin-bottom: 0.25rem !important;
+            }
+
+            /* Skills section mobile */
+            .flex.flex-wrap.gap-3 span {
+                padding: 0.375rem 0.75rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* About section mobile */
+            #about .w-64.h-64 {
+                width: 12rem !important;
+                height: 12rem !important;
+            }
+
+            /* Contact form mobile */
+            .glass-input {
+                padding: 0.75rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            /* Timeline mobile adjustments */
+            .timeline-item {
+                padding-left: 2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .timeline-dot {
+                width: 1rem !important;
+                height: 1rem !important;
+                font-size: 0.625rem !important;
+            }
+
+            /* Floating elements - reduce size on mobile */
+            .floating-circle {
+                width: 3rem !important;
+                height: 3rem !important;
+                opacity: 0.05 !important;
+            }
+
+            /* Modal mobile optimization */
+            .modal-content {
+                margin: 1rem !important;
+                max-width: calc(100% - 2rem) !important;
+            }
+
+            .modal-content .md\:flex {
+                display: block !important;
+            }
+
+            .modal-content .md\:w-1\/2 {
+                width: 100% !important;
+            }
+
+            .modal-content .p-8 {
+                padding: 1rem !important;
+            }
+
+            /* Image slider mobile */
+            .image-slider {
+                height: 200px !important;
+            }
+
+            .cover-image-container {
+                aspect-ratio: 16/9 !important;
+                height: auto !important;
+            }
+
+            /* Reduce glass effects on mobile for performance */
+            .glass-bg, .glass-card, .glass-btn {
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+            }
+        }
+
+        /* Small mobile devices (iPhone SE, etc.) */
+        @media screen and (max-width: 480px) {
+            /* Extra small typography */
+            h1 {
+                font-size: 1.5rem !important; /* ~24px */
+            }
+
+            h2 {
+                font-size: 1.25rem !important; /* ~20px */
+            }
+
+            h3 {
+                font-size: 1.125rem !important; /* ~18px */
+            }
+
+            p {
+                font-size: 0.8125rem !important; /* ~13px */
+            }
+
+            /* Tighter spacing */
+            .glass-bg {
+                padding: 1rem !important;
+                margin: 0 0.25rem;
+            }
+
+            #home .glass-bg {
+                padding: 0.75rem !important;
+            }
+
+            /* Smaller buttons */
+            .glass-btn {
+                padding: 0.375rem 0.75rem !important;
+                font-size: 0.8125rem !important;
+            }
+
+            .glass-btn-primary {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.8125rem !important;
+            }
+
+            /* Project cards */
+            .project-card {
+                height: 200px !important;
+            }
+
+            .project-overlay h3 {
+                font-size: 0.875rem !important;
+            }
+
+            .project-overlay p {
+                font-size: 0.6875rem !important;
+            }
+
+            .project-tag {
+                padding: 0.1rem 0.375rem !important;
+                font-size: 0.6rem !important;
+            }
+
+            /* Profile image extra small */
+            #home .w-40.h-40 {
+                width: 6rem !important;
+                height: 6rem !important;
+            }
+
+            #about .w-64.h-64 {
+                width: 10rem !important;
+                height: 10rem !important;
+            }
+        }
+
+        /* Large mobile devices / small tablets */
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            /* Medium mobile adjustments */
+            h1 {
+                font-size: 2rem !important; /* ~32px */
+            }
+
+            h2 {
+                font-size: 1.625rem !important; /* ~26px */
+            }
+
+            p {
+                font-size: 0.9375rem !important; /* ~15px */
+            }
+
+            .project-card {
+                height: 280px !important;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            /* Remove hover effects on touch devices */
+            .glass-card:hover {
+                transform: none !important;
+            }
+
+            .glass-btn:hover {
+                transform: none !important;
+            }
+
+            /* Larger touch targets */
+            .glass-btn {
+                min-height: 2.75rem;
+                min-width: 2.75rem;
+            }
+
+                         /* Project overlay always visible on touch devices */
+             .project-overlay {
+                 opacity: 1 !important;
+                 visibility: visible !important;
+                 pointer-events: auto !important;
+                 background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%) !important;
+             }
+         }
+
+         /* Additional mobile optimizations for contact and footer */
+         @media screen and (max-width: 768px) {
+             /* Contact section mobile optimization */
+             #contact .flex.flex-wrap.flex-row {
+                 flex-direction: column !important;
+             }
+
+             #contact .glass-card {
+                 min-width: 100% !important;
+                 margin-bottom: 0.75rem !important;
+             }
+
+             #contact .glass-icon {
+                 width: 2.5rem !important;
+                 height: 2.5rem !important;
+                 margin-right: 0.75rem !important;
+             }
+
+             #contact h4 {
+                 font-size: 0.875rem !important;
+                 margin-bottom: 0.25rem !important;
+             }
+
+             #contact a {
+                 font-size: 0.8125rem !important;
+                 word-break: break-all;
+             }
+
+             /* Footer mobile optimization */
+             footer .flex.space-x-6 {
+                 gap: 1rem !important;
+             }
+
+             footer .glass-icon {
+                 width: 2.5rem !important;
+                 height: 2.5rem !important;
+             }
+
+             footer p {
+                 font-size: 0.875rem !important;
+                 padding: 0 1rem;
+             }
+
+             footer .text-xl {
+                 font-size: 1.125rem !important;
+             }
+
+             /* Experience section mobile */
+             #experience .grid.grid-cols-1.md\\:grid-cols-2 {
+                 grid-template-columns: 1fr !important;
+                 gap: 2rem !important;
+             }
+
+             #experience .glass-card {
+                 padding: 1rem !important;
+             }
+
+             #experience h4 {
+                 font-size: 1rem !important;
+                 margin-bottom: 0.5rem !important;
+             }
+
+             #experience h5 {
+                 font-size: 0.875rem !important;
+                 margin-bottom: 0.5rem !important;
+             }
+
+             #experience .text-sm {
+                 font-size: 0.75rem !important;
+             }
+
+             /* Slider controls mobile */
+             .slider-prev, .slider-next {
+                 width: 2rem !important;
+                 height: 2rem !important;
+                 font-size: 0.75rem !important;
+             }
+
+             .slider-dots button {
+                 width: 0.5rem !important;
+                 height: 0.5rem !important;
+             }
+         }
+
+         /* Small mobile specific adjustments */
+         @media screen and (max-width: 480px) {
+             /* Contact cards extra small */
+             #contact .glass-card {
+                 padding: 0.75rem !important;
+             }
+
+             #contact .glass-icon {
+                 width: 2rem !important;
+                 height: 2rem !important;
+                 margin-right: 0.5rem !important;
+             }
+
+             #contact h4 {
+                 font-size: 0.8125rem !important;
+             }
+
+             #contact a {
+                 font-size: 0.75rem !important;
+             }
+
+             /* Experience cards extra small */
+             #experience .glass-card {
+                 padding: 0.75rem !important;
+             }
+
+             #experience h4 {
+                 font-size: 0.875rem !important;
+             }
+
+             /* Footer extra small */
+             footer .text-xl {
+                 font-size: 1rem !important;
+             }
+
+             footer p {
+                 font-size: 0.8125rem !important;
+             }
+         }
     </style>
 </head>
 <body class="relative overflow-x-hidden">
