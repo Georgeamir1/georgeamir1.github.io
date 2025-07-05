@@ -497,6 +497,149 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
         }
+
+        /* Splash Screen Styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .splash-content {
+            text-align: center;
+            position: relative;
+        }
+        
+        .splash-logo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+        }
+        
+        .splash-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        .loading-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 220px;
+            height: 220px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--primary);
+            border-right: 3px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+        
+        .loading-ring::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 220px;
+            height: 220px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--secondary);
+            border-left: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+        
+        .splash-text {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+        
+        .splash-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+        
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 2rem;
+        }
+        
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: bounce 1.4s ease-in-out infinite both;
+        }
+        
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dot:nth-child(3) { animation-delay: 0s; }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            } 40% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Hide main content initially */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
         
         [data-theme="dark"] .glass-input::placeholder {
             color: var(--text-secondary);
@@ -972,6 +1115,28 @@
     </style>
 </head>
 <body class="relative overflow-x-hidden">
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo-container">
+                <img src="assets/WhatsApp Video 2025-06-12 at 17.45.29_d5c9eee7.gif" 
+                     alt="Loading..." 
+                     class="splash-logo"
+                     onerror="this.src='assets/logo/logo.png'">
+                <div class="loading-ring"></div>
+            </div>
+            <h1 class="splash-text">George Amir</h1>
+            <p class="splash-subtitle">Flutter Developer Portfolio</p>
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
     <!-- Floating Background Elements -->
     <div class="floating-circle w-40 h-40 sm:w-64 sm:h-64 bg-indigo-400 top-10 sm:top-20 -left-16 sm:-left-32" style="animation-delay: 0s;"></div>
     <!-- Reduced to only one floating circle for performance -->
@@ -2061,8 +2226,8 @@
             const darkModeToggleDesktop = document.getElementById('dark-mode-toggle-desktop');
             const html = document.documentElement;
             
-            // Check for saved theme preference or default to light mode
-            const currentTheme = localStorage.getItem('theme') || 'light';
+            // Check for saved theme preference or default to dark mode
+            const currentTheme = localStorage.getItem('theme') || 'dark';
             html.setAttribute('data-theme', currentTheme);
             updateThemeIcon(currentTheme);
             
@@ -2281,6 +2446,22 @@
                 }
             });
         });
+        
+        // Splash Screen functionality
+        function initSplashScreen() {
+            const splashScreen = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            // Show main content after splash screen animation
+            setTimeout(() => {
+                splashScreen.classList.add('hidden');
+                mainContent.classList.add('visible');
+            }, 3000); // 3 seconds splash screen duration
+        }
+        
+        // Initialize splash screen
+        document.addEventListener('DOMContentLoaded', initSplashScreen);
     </script>
+    </div> <!-- End Main Content -->
 </body>
 </html>
