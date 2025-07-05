@@ -25,3 +25,19 @@ p {
 .card p:last-child {
 	margin-bottom: 0;
 }
+
+/* Mobile responsive styles for external CSS */
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 1rem;
+	}
+	
+	p {
+		font-size: 0.875rem;
+	}
+	
+	.card {
+		padding: 0.75rem;
+		margin: 0 0.5rem;
+	}
+}
