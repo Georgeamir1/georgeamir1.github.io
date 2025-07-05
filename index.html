@@ -409,26 +409,190 @@
             object-fit: cover;
         }
 
-        /* Add styles for the modal content */
+        /* Enhanced Desktop Modal Styles */
         .modal-content {
-            min-height: 85vh;
+            min-height: 90vh;
             max-height: 95vh;
             overflow-y: auto;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
         .modal-content .md\:flex {
             height: 100%;
-            min-height: 80vh;
+            min-height: 85vh;
         }
 
-        .modal-content .md\:w-1\/2 {
-            height: 100%;
+        /* Desktop Image Section - 60% width for better image showcase */
+        .modal-content .project-image-section {
+            width: 60%;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
-        .modal-content .md\:w-1\/2:first-child {
-            padding: 1.5rem;
+        /* Desktop Content Section - 40% width for content */
+        .modal-content .project-content-section {
+            width: 40%;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: var(--card-bg);
+            border-left: 1px solid var(--card-border);
+        }
+
+        /* Project Header Styling */
+        .project-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .project-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Project Tags Enhanced */
+        .project-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-tag-enhanced {
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+
+        .project-tag-enhanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Project Description Styling */
+        .project-description {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        /* Key Features Section */
+        .project-features {
+            margin-bottom: 2rem;
+        }
+
+        .project-features h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-features h4::before {
+            content: "✨";
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .project-features li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-features li:hover {
+            color: var(--text-primary);
+            padding-left: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack {
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 2px solid var(--glass-border);
+        }
+
+        .tech-stack h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .tech-stack h4::before {
+            content: "🛠️";
+            margin-right: 0.5rem;
+        }
+
+        /* Project Links */
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* Enhanced image slider for mobile app screenshots */
@@ -1661,7 +1825,8 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="md:flex">
-                <div class="p-8">
+                <!-- Enhanced Image Section (60% width) -->
+                <div class="project-image-section">
                     <div class="relative h-full">
                         <div class="image-slider overflow-hidden rounded-lg h-full">
                             <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
@@ -1671,42 +1836,64 @@
                                 <img src="assets/etamim/Profile.png" alt="Profile" class="flex-shrink-0 mobile-screenshot">
                             </div>
                         </div>
-                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
                             <i class="fas fa-chevron-left"></i>
                         </button>
-                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                         <div class="slider-dots flex justify-center mt-4 space-x-2">
-                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-3 h-3 rounded-full bg-gray-300 dot"></button>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 p-8">
-                    <div class="cover-image-container mb-6">
-                        <img src="assets/etamim/cover.png"
-                             alt="Etamin App"
-                             class="w-full h-full object-cover">
+                
+                <!-- Enhanced Content Section (40% width) -->
+                <div class="project-content-section">
+                    <!-- Project Header -->
+                    <div class="project-header">
+                        <h1 class="project-title">Etamin</h1>
+                        <p class="project-subtitle">Medical Health Record Management</p>
+                        <div class="project-tags-container">
+                            <span class="project-tag-enhanced bg-indigo-100 text-indigo-800 border-indigo-300">Flutter</span>
+                            <span class="project-tag-enhanced bg-green-100 text-green-800 border-green-300">Healthcare</span>
+                            <span class="project-tag-enhanced bg-blue-100 text-blue-800 border-blue-300">Medical Records</span>
+                            <span class="project-tag-enhanced bg-purple-100 text-purple-800 border-purple-300">UI/UX</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Etamin</h3>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
-                        <span class="project-tag bg-green-100 text-green-800">Health</span>
-                        <span class="project-tag bg-blue-100 text-blue-800">Patient Record</span>
+
+                    <!-- Project Description -->
+                    <div class="project-description">
+                        Etamin revolutionizes healthcare record management by providing patients with an intuitive, secure platform to document and share their medical history. This comprehensive application streamlines communication between patients and healthcare providers, ensuring critical health information is always accessible when needed.
                     </div>
-                    <p class="text-gray-600 mb-6">
-                        Etamin is a health record application designed with an easy-to-use interface for patients. It allows users to record their medical conditions and easily share this information with their doctors for a comprehensive health overview.
-                    </p>
-                    <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2">
-                        <li>Patient medical record management</li>
-                        <li>Easy input of health conditions</li>
-                        <li>Secure sharing of records with doctors</li>
-                        <li>User-friendly interface</li>
-                    </ul>
+
+                    <!-- Key Features -->
+                    <div class="project-features">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Comprehensive medical record management system</li>
+                            <li>Secure patient authentication and data encryption</li>
+                            <li>Easy medical condition input and tracking</li>
+                            <li>Seamless sharing with healthcare providers</li>
+                            <li>Intuitive and accessible user interface</li>
+                            <li>Multi-language support for diverse users</li>
+                            <li>Offline data access and synchronization</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="tech-stack">
+                        <h4>Technology Stack</h4>
+                        <div class="project-tags-container">
+                            <span class="project-tag-enhanced bg-blue-50 text-blue-700 border-blue-200">Flutter</span>
+                            <span class="project-tag-enhanced bg-green-50 text-green-700 border-green-200">Dart</span>
+                            <span class="project-tag-enhanced bg-orange-50 text-orange-700 border-orange-200">Firebase</span>
+                            <span class="project-tag-enhanced bg-purple-50 text-purple-700 border-purple-200">Provider</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1717,31 +1904,32 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="md:flex">
-                <div class="p-8">
+                <!-- Enhanced Image Section (60% width) -->
+                <div class="project-image-section">
                     <div class="relative h-full">
                         <div class="image-slider overflow-hidden rounded-lg h-full">
                             <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
-                                <img src="assets/casty/1. Spash Screen.png" alt="Splash Screen" class="flex-shrink-0">
-                                <img src="assets/casty/2.2 Create Account - Name.png" alt="Create Account - Name" class="flex-shrink-0">
-                                <img src="assets/casty/2.3 Create Account - Birthdate.png" alt="Create Account - Birthdate" class="flex-shrink-0">
-                                <img src="assets/casty/2.5 Create Account - Select Interest.png" alt="Create Account - Select Interest" class="flex-shrink-0">
-                                <img src="assets/casty/2.6 Create Account - Upload Photo.png" alt="Create Account - Upload Photo" class="flex-shrink-0">
-                                <img src="assets/casty/2.8 Login - Empty State.png" alt="Login - Empty State" class="flex-shrink-0">
-                                <img src="assets/casty/3. Home - Make Friends.png" alt="Home - Make Friends" class="flex-shrink-0">
-                                <img src="assets/casty/3.2 Home - Search Partners (Swipe Right).png" alt="Home - Search Partners (Swipe Right)" class="flex-shrink-0">
-                                <img src="assets/casty/4. Discover.png" alt="Discover" class="flex-shrink-0">
-                                <img src="assets/casty/4.2 Discover - Scroll & Search clicked.png" alt="Discover - Scroll & Search clicked" class="flex-shrink-0">
-                                <img src="assets/casty/4.3 Discover - by Interest v1.png" alt="Discover - by Interest v1" class="flex-shrink-0">
-                                <img src="assets/casty/5.2 Matches.png" alt="Matches" class="flex-shrink-0">
-                                <img src="assets/casty/5.3 - Profile Details v1.png" alt="Profile Details v1" class="flex-shrink-0">
-                                <img src="assets/casty/5.3 - Profile Details v1-1.png" alt="Profile Details v1-1" class="flex-shrink-0">
-                                <img src="assets/casty/6. Messages.png" alt="Messages" class="flex-shrink-0">
-                                <img src="assets/casty/6.4 Text Chat.png" alt="Text Chat" class="flex-shrink-0">
-                                <img src="assets/casty/7. Profile.png" alt="Profile" class="flex-shrink-0">
-                                <img src="assets/casty/7.1 Edit Profile.png" alt="Edit Profile" class="flex-shrink-0">
-                                <img src="assets/casty/location.png" alt="Location" class="flex-shrink-0">
-                                <img src="assets/casty/logo.png" alt="Logo" class="flex-shrink-0">
-                                <img src="assets/casty/Which one are you_.jpg" alt="Which one are you" class="flex-shrink-0">
+                                <img src="assets/casty/1. Spash Screen.png" alt="Splash Screen" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/2.2 Create Account - Name.png" alt="Create Account - Name" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/2.3 Create Account - Birthdate.png" alt="Create Account - Birthdate" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/2.5 Create Account - Select Interest.png" alt="Create Account - Select Interest" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/2.6 Create Account - Upload Photo.png" alt="Create Account - Upload Photo" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/2.8 Login - Empty State.png" alt="Login - Empty State" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/3. Home - Make Friends.png" alt="Home - Make Friends" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/3.2 Home - Search Partners (Swipe Right).png" alt="Home - Search Partners (Swipe Right)" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/4. Discover.png" alt="Discover" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/4.2 Discover - Scroll & Search clicked.png" alt="Discover - Scroll & Search clicked" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/4.3 Discover - by Interest v1.png" alt="Discover - by Interest v1" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/5.2 Matches.png" alt="Matches" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/5.3 - Profile Details v1.png" alt="Profile Details v1" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/5.3 - Profile Details v1-1.png" alt="Profile Details v1-1" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/6. Messages.png" alt="Messages" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/6.4 Text Chat.png" alt="Text Chat" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/7. Profile.png" alt="Profile" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/7.1 Edit Profile.png" alt="Edit Profile" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/location.png" alt="Location" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/logo.png" alt="Logo" class="flex-shrink-0 mobile-screenshot">
+                                <img src="assets/casty/Which one are you_.jpg" alt="Which one are you" class="flex-shrink-0 mobile-screenshot">
                             </div>
                         </div>
                         <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
@@ -1775,31 +1963,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 p-8">
-                    <div class="cover-image-container mb-6">
-                        <img src="assets/casty/logo.png"
-                             alt="Casty UI"
-                             class="w-full h-full object-contain">
+                <!-- Enhanced Content Section (40% width) -->
+                <div class="project-content-section">
+                    <!-- Project Header -->
+                    <div class="project-header">
+                        <h1 class="project-title">Casty</h1>
+                        <p class="project-subtitle">Social Casting & Talent Discovery Platform</p>
+                        <div class="project-tags-container">
+                            <span class="project-tag-enhanced bg-purple-100 text-purple-800 border-purple-300">UI/UX Design</span>
+                            <span class="project-tag-enhanced bg-pink-100 text-pink-800 border-pink-300">Social Platform</span>
+                            <span class="project-tag-enhanced bg-blue-100 text-blue-800 border-blue-300">Media Production</span>
+                            <span class="project-tag-enhanced bg-indigo-100 text-indigo-800 border-indigo-300">Talent Discovery</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Casty UI</h3>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="project-tag bg-purple-100 text-purple-800">UI/UX</span>
-                        <span class="project-tag bg-pink-100 text-pink-800">Design</span>
-                        <span class="project-tag bg-yellow-100 text-yellow-800">Modern</span>
-                        <span class="project-tag bg-green-100 text-green-800">Social App</span>
+
+                    <!-- Project Description -->
+                    <div class="project-description">
+                        Casty represents a revolutionary social casting platform that bridges the gap between talented individuals and media production companies. With a modern, intuitive interface, it provides a comprehensive ecosystem for talent discovery, portfolio management, and seamless communication in the entertainment industry.
                     </div>
-                    <p class="text-gray-600 mb-6">
-                        Casty UI is a modern and easy-to-use user interface developed for a social networking platform. It provides a comprehensive tool for users to connect, discover new friends, and manage their social interactions with an intuitive and beautiful design.
-                    </p>
-                    <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
-                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2">
-                        <li>Modern and intuitive design</li>
-                        <li>User authentication and profile creation</li>
-                        <li>Friend discovery and matching system</li>
-                        <li>Real-time messaging and chat</li>
-                        <li>Profile management and customization</li>
-                        <li>Interest-based matching</li>
-                    </ul>
+
+                    <!-- Key Features -->
+                    <div class="project-features">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Advanced talent discovery and matching algorithms</li>
+                            <li>Comprehensive portfolio and profile management</li>
+                            <li>Real-time messaging and communication tools</li>
+                            <li>Interest-based filtering and search capabilities</li>
+                            <li>Professional networking and connection features</li>
+                            <li>Privacy controls and secure data handling</li>
+                            <li>Interactive swipe-based talent browsing</li>
+                            <li>Notification system for opportunities and updates</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="tech-stack">
+                        <h4>Design Tools & Technologies</h4>
+                        <div class="project-tags-container">
+                            <span class="project-tag-enhanced bg-orange-50 text-orange-700 border-orange-200">Figma</span>
+                            <span class="project-tag-enhanced bg-purple-50 text-purple-700 border-purple-200">Adobe XD</span>
+                            <span class="project-tag-enhanced bg-blue-50 text-blue-700 border-blue-200">Prototyping</span>
+                            <span class="project-tag-enhanced bg-green-50 text-green-700 border-green-200">User Research</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
