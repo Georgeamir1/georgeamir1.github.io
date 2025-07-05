@@ -1406,14 +1406,23 @@
                 
                 <div class="relative z-10">
                     <!-- Project Filter -->
-                    <div class="flex flex-wrap justify-center mb-12 gap-3">
-                        <button class="px-4 py-2 rounded-full glass-btn glass-btn-primary filter-btn" data-filter="all">All Projects</button>
-                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="ui">UI/UX Design</button>
-                        <button class="px-4 py-2 rounded-full glass-btn filter-btn" data-filter="inprogress">In Progress</button>
+                    <div class="flex flex-wrap justify-center mb-16 gap-4">
+                        <button class="px-6 py-3 rounded-full glass-btn glass-btn-primary filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="all">
+                            <i class="fas fa-th-large mr-2"></i>All Projects
+                        </button>
+                        <button class="px-6 py-3 rounded-full glass-btn filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="ui">
+                            <i class="fas fa-paint-brush mr-2"></i>UI/UX Design
+                        </button>
+                        <button class="px-6 py-3 rounded-full glass-btn filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="mobile">
+                            <i class="fas fa-mobile-alt mr-2"></i>Mobile Apps
+                        </button>
+                        <button class="px-6 py-3 rounded-full glass-btn filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="inprogress">
+                            <i class="fas fa-clock mr-2"></i>In Progress
+                        </button>
                     </div>
                     
                     <!-- Projects Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                         <!-- Project 1: Etamin UI -->
                         <div class="project-card glass-card" data-category="ui">
                             <div class="flex justify-center items-center h-full">
@@ -1558,10 +1567,29 @@
                     </div>
                     
                     <!-- View More Button -->
-                    <div class="text-center mt-12">
-                        <button class="px-6 py-3 rounded-xl font-medium glass-btn glass-btn-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                            View More Projects <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
+                    <div class="text-center mt-16">
+                        <div class="glass-card p-8 rounded-3xl bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-indigo-900/20 dark:to-cyan-900/20 border-2 border-transparent bg-clip-padding">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-3xl blur opacity-20"></div>
+                                <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6">
+                                    <div class="flex items-center justify-center mb-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
+                                            <i class="fas fa-plus"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Interested in More Projects?</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">I have more exciting projects in my portfolio. Let's discuss how I can help with your next project!</p>
+                                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                        <a href="#contact" class="px-8 py-3 rounded-xl font-medium glass-btn glass-btn-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
+                                            <i class="fas fa-envelope mr-2"></i>Get In Touch
+                                        </a>
+                                        <a href="https://github.com/Georgeamir1" target="_blank" class="px-8 py-3 rounded-xl font-medium glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
+                                            <i class="fab fa-github mr-2"></i>View GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
