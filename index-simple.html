@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Amir | Flutter Developer Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f3f4f6;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .glass {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-16">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+                George Amir
+            </h1>
+            <p class="text-2xl text-gray-300 mb-8">Flutter Developer</p>
+            
+            <div class="glass rounded-2xl p-8 max-w-2xl mx-auto mb-8">
+                <h2 class="text-3xl font-bold mb-4">Welcome to My Portfolio</h2>
+                <p class="text-gray-300 mb-6">
+                    I'm a passionate Flutter developer creating beautiful, performant mobile applications.
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full font-semibold hover:opacity-90 transition">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="px-6 py-3 border-2 border-purple-500 rounded-full font-semibold hover:bg-purple-500/20 transition">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            
+            <div id="projects" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+                <div class="glass rounded-xl p-6 hover:scale-105 transition-transform">
+                    <img src="assets/casty/3. Home - Make Friends.png" alt="Casty App" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Casty - Dating App</h3>
+                    <p class="text-gray-400">Modern dating app with real-time features</p>
+                </div>
+                
+                <div class="glass rounded-xl p-6 hover:scale-105 transition-transform">
+                    <img src="assets/etamim/Home.png" alt="Etamim App" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Etamim - Social Platform</h3>
+                    <p class="text-gray-400">Social networking with real-time chat</p>
+                </div>
+                
+                <div class="glass rounded-xl p-6 hover:scale-105 transition-transform">
+                    <img src="assets/orchida clinic/1.jpg" alt="Orchida Clinic" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Orchida Clinic</h3>
+                    <p class="text-gray-400">Medical appointment booking system</p>
+                </div>
+            </div>
+            
+            <div id="contact" class="mt-16 glass rounded-2xl p-8 max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+                <p class="text-gray-300 mb-4">Email: george.amir@example.com</p>
+                <p class="text-gray-300">Location: Cairo, Egypt</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
