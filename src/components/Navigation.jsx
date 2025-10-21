@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa'
 
 const Navigation = ({ darkMode, setDarkMode }) => {
@@ -52,11 +51,11 @@ const Navigation = ({ darkMode, setDarkMode }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavigationMenu.Root className="relative">
-              <NavigationMenu.List className="flex space-x-6">
+            <nav className="relative">
+              <ul className="flex space-x-6">
                 {navItems.map((item, index) => (
-                  <NavigationMenu.Item key={index}>
-                    <NavigationMenu.Link
+                  <li key={index}>
+                    <a
                       href={item.href}
                       className="text-white/80 hover:text-white transition-colors duration-200 font-medium relative group"
                     >
@@ -64,11 +63,11 @@ const Navigation = ({ darkMode, setDarkMode }) => {
                       <motion.span
                         className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-600 group-hover:w-full transition-all duration-300"
                       />
-                    </NavigationMenu.Link>
-                  </NavigationMenu.Item>
+                    </a>
+                  </li>
                 ))}
-              </NavigationMenu.List>
-            </NavigationMenu.Root>
+              </ul>
+            </nav>
 
             {/* Theme Toggle */}
             <motion.button

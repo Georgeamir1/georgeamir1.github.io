@@ -2,7 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
-import * as Progress from '@radix-ui/react-progress'
 import { 
   SiFlutter, SiDart, SiFirebase, SiGit, SiFigma, 
   SiAndroidstudio, SiVisualstudiocode, SiPostman,
@@ -136,15 +135,14 @@ const Skills = () => {
                     </div>
                     <span className="text-sm text-gray-400">{skill.level}%</span>
                   </div>
-                  <Progress.Root
-                    className="relative overflow-hidden bg-white/10 rounded-full h-2"
-                    value={skill.level}
-                  >
-                    <Progress.Indicator
-                      className="bg-gradient-to-r from-purple-500 to-pink-600 h-full rounded-full transition-all duration-1000 ease-out"
-                      style={{ width: inView ? `${skill.level}%` : '0%' }}
+                  <div className="relative overflow-hidden bg-white/10 rounded-full h-2">
+                    <motion.div
+                      className="bg-gradient-to-r from-purple-500 to-pink-600 h-full rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{ width: inView ? `${skill.level}%` : '0%' }}
+                      transition={{ duration: 1, ease: "easeOut" }}
                     />
-                  </Progress.Root>
+                  </div>
                 </motion.div>
               ))}
             </div>

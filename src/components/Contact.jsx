@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import toast from 'react-hot-toast'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
-import * as Form from '@radix-ui/react-form'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -177,105 +176,81 @@ const Contact = () => {
             variants={itemVariants}
             className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
           >
-            <Form.Root onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="space-y-6">
-                <Form.Field name="name">
-                  <Form.Control asChild>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your Name"
-                      required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400"
-                    />
-                  </Form.Control>
-                  <Form.Message match="valueMissing" className="text-red-400 text-sm mt-1">
-                    Please enter your name
-                  </Form.Message>
-                </Form.Field>
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400"
+                  />
+                </div>
 
-                <Form.Field name="email">
-                  <Form.Control asChild>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Your Email"
-                      required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400"
-                    />
-                  </Form.Control>
-                  <Form.Message match="valueMissing" className="text-red-400 text-sm mt-1">
-                    Please enter your email
-                  </Form.Message>
-                  <Form.Message match="typeMismatch" className="text-red-400 text-sm mt-1">
-                    Please enter a valid email
-                  </Form.Message>
-                </Form.Field>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400"
+                  />
+                </div>
 
-                <Form.Field name="subject">
-                  <Form.Control asChild>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Subject"
-                      required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400"
-                    />
-                  </Form.Control>
-                  <Form.Message match="valueMissing" className="text-red-400 text-sm mt-1">
-                    Please enter a subject
-                  </Form.Message>
-                </Form.Field>
+                <div>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="Subject"
+                    required
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400"
+                  />
+                </div>
 
-                <Form.Field name="message">
-                  <Form.Control asChild>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Your Message"
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400 resize-none"
-                    />
-                  </Form.Control>
-                  <Form.Message match="valueMissing" className="text-red-400 text-sm mt-1">
-                    Please enter your message
-                  </Form.Message>
-                </Form.Field>
+                <div>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Your Message"
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all duration-300 placeholder-gray-400 resize-none"
+                  />
+                </div>
 
-                <Form.Submit asChild>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <motion.div
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                        />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <FaPaperPlane />
-                        Send Message
-                      </>
-                    )}
-                  </motion.button>
-                </Form.Submit>
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                      />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane />
+                      Send Message
+                    </>
+                  )}
+                </motion.button>
               </div>
-            </Form.Root>
+            </form>
           </motion.div>
         </div>
       </motion.div>
