@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>George Amir | Flutter Developer Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Glass Neomorphic Styling - Dark Mode Only */
+        :root {
+            --primary: #6366F1;
+            --secondary: #22D3EE;
+            --glass: rgba(0, 0, 0, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --text-primary: #f3f4f6;
+            --text-secondary: #d1d5db;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --card-bg: rgba(0, 0, 0, 0.3);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(0, 0, 0, 0.3);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --modal-bg: rgba(0, 0, 0, 0.9);
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Cascadia Code', 'Source Code Pro', 'Courier New', monospace;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .glass-bg {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+        
+        .glass-btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+        
+        .glass-input {
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+        }
+        
+        .glass-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .glass-icon {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .floating {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 3s ease infinite;
+        }
+        
+        .wave {
+            animation: wave 2.5s ease infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+        
+        .gradient-flow {
+            background: linear-gradient(-45deg, var(--primary), var(--secondary), #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Skill Bars */
+        .skill-bar {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.05);
+            height: 12px;
+            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .skill-progress {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            height: 100%;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--glass);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Glow Effect */
+        .glow {
+            filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.6));
+        }
+        
+        /* Section Divider */
+        .divider {
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+            z-index: -1;
+        }
+        
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .card-3d:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateZ(20px);
+        }
+        
+        /* Floating Circles */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.7rem;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary, var(--secondary)));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+        }
+        
+        /* Language Proficiency */
+        .language-progress {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(79, 70, 229, 0.2);
+        }
+        
+        .language-progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        /* Project Tags */
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Project Card */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            height: 300px;
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), visibility 0.25s;
+            pointer-events: none;
+            will-change: opacity, visibility;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Project Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            max-width: 1200px;
+            margin: 2rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            min-height: 80vh;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Add these styles to your existing styles */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border-radius: 1rem;
+            min-height: 600px;
+        }
+        
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+        }
+        
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            max-height: 600px;
+            border-radius: 1rem;
+        }
+        
+        .slider-dots .dot.active {
+            background-color: var(--primary); 
+        }
+
+        /* Cover image specific styles */
+        .cover-image-container {
+            aspect-ratio: 1/1;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .cover-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Add styles for the modal content */
+        .modal-content .md\:flex {
+            height: 100%;
+            min-height: 650px;
+        }
+
+        .modal-content .md\:w-1\/2 {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-content .md\:w-1\/2:first-child {
+            padding: 2rem;
+        }
+
+        /* Image panel specific styles */
+        .modal-content .md\:w-1\/2:first-child,
+        .modal-content .p-8:first-child {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Dark mode text adjustments */
+        [data-theme="dark"] .text-gray-800 {
+            color: var(--text-primary);
+        }
+        
+        [data-theme="dark"] .text-gray-700 {
+            color: var(--text-secondary);
+        }
+        
+        [data-theme="dark"] .text-gray-600 {
+            color: var(--text-secondary);
+        }
+        
+        [data-theme="dark"] .hover\:text-indigo-600:hover {
+            color: var(--primary);
+        }
+        
+        [data-theme="dark"] .text-indigo-600 {
+            color: var(--primary);
+        }
+        
+        /* Enhanced glass effects for dark mode */
+        [data-theme="dark"] .glass-bg {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        [data-theme="dark"] .glass-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        [data-theme="dark"] .glass-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        
+        [data-theme="dark"] .glass-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+
+
+        /* Splash Screen Styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .splash-content {
+            text-align: center;
+            position: relative;
+        }
+        
+        .splash-logo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+        }
+        
+        .splash-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        .loading-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 220px;
+            height: 220px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--primary);
+            border-right: 3px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+        
+        .loading-ring::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 220px;
+            height: 220px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--secondary);
+            border-left: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+        
+        .splash-text {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+        
+        .splash-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+        
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 2rem;
+        }
+        
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: bounce 1.4s ease-in-out infinite both;
+        }
+        
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dot:nth-child(3) { animation-delay: 0s; }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            } 40% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Hide main content initially */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+        
+        [data-theme="dark"] .glass-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        /* Floating circles dark mode */
+        [data-theme="dark"] .floating-circle {
+            opacity: 0.05;
+        }
+        
+        /* Project modal dark mode */
+        [data-theme="dark"] .project-modal {
+            background-color: var(--modal-bg);
+        }
+        
+        [data-theme="dark"] .project-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
+        }
+        
+        /* Timeline dark mode */
+        [data-theme="dark"] .timeline-item::before {
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        [data-theme="dark"] .timeline-dot {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+
+
+        /* Add to <style> section */
+        html {
+          -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+        }
+
+        /* Mobile-First Responsive Design */
+        @media screen and (max-width: 768px) {
+            /* Base Mobile Styles */
+            body {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+
+            /* Typography - Smaller fonts for mobile */
+            h1 {
+                font-size: 1.75rem !important; /* ~28px */
+                line-height: 1.2;
+                margin-bottom: 0.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem !important; /* ~24px */
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem !important; /* ~20px */
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                font-size: 0.875rem !important; /* ~14px */
+                line-height: 1.5;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Navigation adjustments */
+            .max-w-7xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+
+            nav .flex.h-16 {
+                height: 3.5rem; /* Smaller nav height */
+            }
+
+            nav .text-xl {
+                font-size: 1.125rem !important; /* Smaller logo text */
+            }
+
+            /* Hero section mobile optimization */
+            #home {
+                padding-top: 4rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            #home .glass-bg {
+                padding: 1rem !important;
+                margin: 0 0.5rem;
+            }
+
+            #home h1 {
+                font-size: 1.75rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            #home h2 {
+                font-size: 1.25rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            #home p {
+                font-size: 0.875rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Profile image mobile sizing */
+            #home .w-40.h-40 {
+                width: 8rem !important;
+                height: 8rem !important;
+            }
+
+            /* Button adjustments */
+            .glass-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .glass-btn-primary {
+                padding: 0.75rem 1.25rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            /* Section spacing */
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            .glass-bg {
+                padding: 1.5rem !important;
+                margin: 0 0.5rem;
+            }
+
+            /* Project cards mobile optimization */
+            .project-card {
+                height: 250px !important;
+            }
+
+            .project-overlay {
+                padding: 1rem !important;
+            }
+
+            .project-overlay h3 {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .project-overlay p {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            .project-tag {
+                padding: 0.125rem 0.5rem !important;
+                font-size: 0.65rem !important;
+                margin-right: 0.25rem !important;
+                margin-bottom: 0.25rem !important;
+            }
+
+            /* Skills section mobile */
+            .flex.flex-wrap.gap-3 span {
+                padding: 0.375rem 0.75rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* About section mobile */
+            #about .w-64.h-64 {
+                width: 12rem !important;
+                height: 12rem !important;
+            }
+
+            /* Contact form mobile */
+            .glass-input {
+                padding: 0.75rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            /* Timeline mobile adjustments */
+            .timeline-item {
+                padding-left: 2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .timeline-dot {
+                width: 1rem !important;
+                height: 1rem !important;
+                font-size: 0.625rem !important;
+            }
+
+            /* Floating elements - reduce size on mobile */
+            .floating-circle {
+                width: 3rem !important;
+                height: 3rem !important;
+                opacity: 0.05 !important;
+            }
+
+            /* Modal mobile optimization */
+            .modal-content {
+                margin: 1rem !important;
+                max-width: calc(100% - 2rem) !important;
+            }
+
+            .modal-content .md\:flex {
+                display: block !important;
+            }
+
+            .modal-content .md\:w-1\/2 {
+                width: 100% !important;
+            }
+
+            .modal-content .p-8 {
+                padding: 1rem !important;
+            }
+
+            /* Image slider mobile */
+            .image-slider {
+                height: 200px !important;
+            }
+
+            .cover-image-container {
+                aspect-ratio: 16/9 !important;
+                height: auto !important;
+            }
+
+            /* Reduce glass effects on mobile for performance */
+            .glass-bg, .glass-card, .glass-btn {
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+            }
+        }
+
+        /* Small mobile devices (iPhone SE, etc.) */
+        @media screen and (max-width: 480px) {
+            /* Extra small typography */
+            h1 {
+                font-size: 1.5rem !important; /* ~24px */
+            }
+
+            h2 {
+                font-size: 1.25rem !important; /* ~20px */
+            }
+
+            h3 {
+                font-size: 1.125rem !important; /* ~18px */
+            }
+
+            p {
+                font-size: 0.8125rem !important; /* ~13px */
+            }
+
+            /* Tighter spacing */
+            .glass-bg {
+                padding: 1rem !important;
+                margin: 0 0.25rem;
+            }
+
+            #home .glass-bg {
+                padding: 0.75rem !important;
+            }
+
+            /* Smaller buttons */
+            .glass-btn {
+                padding: 0.375rem 0.75rem !important;
+                font-size: 0.8125rem !important;
+            }
+
+            .glass-btn-primary {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.8125rem !important;
+            }
+
+            /* Project cards */
+            .project-card {
+                height: 200px !important;
+            }
+
+            .project-overlay h3 {
+                font-size: 0.875rem !important;
+            }
+
+            .project-overlay p {
+                font-size: 0.6875rem !important;
+            }
+
+            .project-tag {
+                padding: 0.1rem 0.375rem !important;
+                font-size: 0.6rem !important;
+            }
+
+            /* Profile image extra small */
+            #home .w-40.h-40 {
+                width: 6rem !important;
+                height: 6rem !important;
+            }
+
+            #about .w-64.h-64 {
+                width: 10rem !important;
+                height: 10rem !important;
+            }
+        }
+
+        /* Large mobile devices / small tablets */
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            /* Medium mobile adjustments */
+            h1 {
+                font-size: 2rem !important; /* ~32px */
+            }
+
+            h2 {
+                font-size: 1.625rem !important; /* ~26px */
+            }
+
+            p {
+                font-size: 0.9375rem !important; /* ~15px */
+            }
+
+            .project-card {
+                height: 280px !important;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            /* Remove hover effects on touch devices */
+            .glass-card:hover {
+                transform: none !important;
+            }
+
+            .glass-btn:hover {
+                transform: none !important;
+            }
+
+            /* Larger touch targets */
+            .glass-btn {
+                min-height: 2.75rem;
+                min-width: 2.75rem;
+            }
+
+                         /* Project overlay always visible on touch devices */
+             .project-overlay {
+                 opacity: 1 !important;
+                 visibility: visible !important;
+                 pointer-events: auto !important;
+                 background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%) !important;
+             }
+         }
+
+         /* Additional mobile optimizations for contact and footer */
+         @media screen and (max-width: 768px) {
+             /* Contact section mobile optimization */
+             #contact .flex.flex-wrap.flex-row {
+                 flex-direction: column !important;
+             }
+
+             #contact .glass-card {
+                 min-width: 100% !important;
+                 margin-bottom: 0.75rem !important;
+             }
+
+             #contact .glass-icon {
+                 width: 2.5rem !important;
+                 height: 2.5rem !important;
+                 margin-right: 0.75rem !important;
+             }
+
+             #contact h4 {
+                 font-size: 0.875rem !important;
+                 margin-bottom: 0.25rem !important;
+             }
+
+             #contact a {
+                 font-size: 0.8125rem !important;
+                 word-break: break-all;
+             }
+
+             /* Footer mobile optimization */
+             footer .flex.space-x-6 {
+                 gap: 1rem !important;
+             }
+
+             footer .glass-icon {
+                 width: 2.5rem !important;
+                 height: 2.5rem !important;
+             }
+
+             footer p {
+                 font-size: 0.875rem !important;
+                 padding: 0 1rem;
+             }
+
+             footer .text-xl {
+                 font-size: 1.125rem !important;
+             }
+
+             /* Experience section mobile */
+             #experience .grid.grid-cols-1.md\\:grid-cols-2 {
+                 grid-template-columns: 1fr !important;
+                 gap: 2rem !important;
+             }
+
+             #experience .glass-card {
+                 padding: 1rem !important;
+             }
+
+             #experience h4 {
+                 font-size: 1rem !important;
+                 margin-bottom: 0.5rem !important;
+             }
+
+             #experience h5 {
+                 font-size: 0.875rem !important;
+                 margin-bottom: 0.5rem !important;
+             }
+
+             #experience .text-sm {
+                 font-size: 0.75rem !important;
+             }
+
+             /* Slider controls mobile */
+             .slider-prev, .slider-next {
+                 width: 2rem !important;
+                 height: 2rem !important;
+                 font-size: 0.75rem !important;
+             }
+
+             .slider-dots button {
+                 width: 0.5rem !important;
+                 height: 0.5rem !important;
+             }
+         }
+
+         /* Small mobile specific adjustments */
+         @media screen and (max-width: 480px) {
+             /* Contact cards extra small */
+             #contact .glass-card {
+                 padding: 0.75rem !important;
+             }
+
+             #contact .glass-icon {
+                 width: 2rem !important;
+                 height: 2rem !important;
+                 margin-right: 0.5rem !important;
+             }
+
+             #contact h4 {
+                 font-size: 0.8125rem !important;
+             }
+
+             #contact a {
+                 font-size: 0.75rem !important;
+             }
+
+             /* Experience cards extra small */
+             #experience .glass-card {
+                 padding: 0.75rem !important;
+             }
+
+             #experience h4 {
+                 font-size: 0.875rem !important;
+             }
+
+             /* Footer extra small */
+             footer .text-xl {
+                 font-size: 1rem !important;
+             }
+
+             footer p {
+                 font-size: 0.8125rem !important;
+             }
+         }
+    </style>
+</head>
+<body class="relative overflow-x-hidden">
+<!-- Splash Screen -->
+<div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+        <div class="splash-logo-container">
+            <img src="assets/WhatsApp Video 2025-06-12 at 17.45.29_d5c9eee7.gif"
+                 alt="Loading..."
+                 class="splash-logo"
+                 onerror="this.src='assets/logo/logo.png'">
+            <div class="loading-ring"></div>
+        </div>
+        <h1 class="splash-text">George Amir</h1>
+        <p class="splash-subtitle">Flutter Developer Portfolio</p>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div id="main-content" class="main-content">
+    <!-- Floating Background Elements -->
+    <div class="floating-circle w-40 h-40 sm:w-64 sm:h-64 bg-indigo-400 top-10 sm:top-20 -left-16 sm:-left-32" style="animation-delay: 0s;"></div>
+    <!-- Reduced to only one floating circle for performance -->
+    <!-- <div class="floating-circle w-96 h-96 bg-cyan-400 bottom-20 -right-48" style="animation-delay: 2s;"></div> -->
+    <!-- <div class="floating-circle w-80 h-80 bg-purple-400 top-1/2 left-1/4" style="animation-delay: 4s;"></div> -->
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div class="flex justify-between h-16 sm:h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-bold text-gray-800">George<span class="gradient-text">Amir</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-6">
+                    <a href="#home" class="text-gray-800 hover:text-indigo-600 px-4 py-2 rounded-lg glass-btn transition-all duration-300 hover:-translate-y-1">Home</a>
+                    <a href="#about" class="text-gray-800 hover:text-indigo-600 px-4 py-2 rounded-lg glass-btn transition-all duration-300 hover:-translate-y-1">About</a>
+                    <a href="#skills" class="text-gray-800 hover:text-indigo-600 px-4 py-2 rounded-lg glass-btn transition-all duration-300 hover:-translate-y-1">Skills</a>
+                    <a href="#projects" class="text-gray-800 hover:text-indigo-600 px-4 py-2 rounded-lg glass-btn transition-all duration-300 hover:-translate-y-1">Projects</a>
+                    <a href="#experience" class="text-gray-800 hover:text-indigo-600 px-4 py-2 rounded-lg glass-btn transition-all duration-300 hover:-translate-y-1">Experience</a>
+                    <a href="#contact" class="text-gray-800 hover:text-indigo-600 px-4 py-2 rounded-lg glass-btn transition-all duration-300 hover:-translate-y-1">Contact</a>
+
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-lg glass-btn text-gray-800 hover:text-indigo-600">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-bg rounded-lg mx-2 sm:mx-4 mt-2">
+            <div class="px-2 pt-2 pb-3 space-y-2 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-lg glass-btn text-gray-800">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-lg glass-btn text-gray-800">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-lg glass-btn text-gray-800">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-lg glass-btn text-gray-800">Projects</a>
+                <a href="#experience" class="block px-3 py-2 rounded-lg glass-btn text-gray-800">Experience</a>
+                <a href="#contact" class="block px-3 py-2 rounded-lg glass-btn text-gray-800">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-10 md:pt-32 md:pb-20 relative">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div class="glass-bg rounded-3xl p-4 sm:p-8 md:p-12 overflow-hidden relative">
+                <!-- Enhanced animated background elements -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-indigo-400 opacity-10 floating" style="animation-delay: 0.5s;"></div>
+                <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-purple-400 opacity-10 floating" style="animation-delay: 1.5s;"></div>
+
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <div class="mb-2">
+                            <span class="inline-block px-4 py-2 rounded-full glass-btn text-sm font-medium text-indigo-600 mb-4">
+                                <i class="fas fa-rocket mr-2"></i>Available for Freelance
+                            </span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
+                            Hi, I'm <span class="gradient-text">George Amir</span> <span class="wave">👋</span>
+                        </h1>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-6">
+                            <span class="gradient-text">Flutter Developer</span> & <span class="gradient-text">UI/UX Designer</span>
+                        </h2>
+                        <p class="text-gray-600 mb-6 text-base sm:text-lg leading-relaxed">
+                            Passionate about creating exceptional mobile experiences that users love. I specialize in building beautiful, high-performance cross-platform applications with Flutter, combining clean code architecture with stunning UI/UX design.
+                        </p>
+                        <div class="flex items-center space-x-6 mb-8 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>3+ Years Experience</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>20+ Projects Completed</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>100% Client Satisfaction</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                            <a href="#contact" class="px-8 py-4 rounded-xl font-medium glass-btn glass-btn-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center group">
+                                <span class="flex items-center justify-center">
+                                    Let's Build Something Amazing
+                                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                            </a>
+                            <a href="#projects" class="px-8 py-4 rounded-xl font-medium text-indigo-600 glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center group">
+                                <span class="flex items-center justify-center">
+                                    View My Work
+                                    <i class="fas fa-external-link-alt ml-2 group-hover:scale-110 transition-transform"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80">
+                            <div class="absolute inset-0 bg-indigo-100 rounded-full opacity-20 floating" style="animation-delay: 0.5s;"></div>
+                            <div class="absolute inset-4 bg-indigo-200 rounded-full opacity-30 floating" style="animation-delay: 1s;"></div>
+                            <div class="absolute inset-8 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: 1.5s;"></div>
+                            <img src="assets/logo/logo.png"
+                                 alt="George Amir - Flutter Developer"
+                                 class="absolute inset-0 w-full h-full rounded-full object-contain border-4 border-white floating glow" loading="lazy">
+                        </div>
+                        <!-- Floating tech badges -->
+                        <div class="absolute top-10 right-10 glass-card p-4 rounded-full floating" style="animation-delay: 2s;">
+                            <img src="https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png"
+                                 alt="Flutter"
+                                 class="w-8 h-8 object-contain">
+                        </div>
+                        <div class="absolute bottom-10 left-10 glass-card p-4 rounded-full floating" style="animation-delay: 2.5s;">
+                            <img src="https://dart.dev/assets/shared/dart/icon/64.png"
+                                 alt="Dart"
+                                 class="w-8 h-8 object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+                <div class="w-20 h-2 rounded-full mx-auto gradient-flow"></div>
+            </div>
+
+            <div class="glass-bg rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                <!-- Floating elements -->
+                <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-purple-400 opacity-10 floating" style="animation-delay: 1s;"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 2s;"></div>
+
+                <div class="relative z-10 md:flex md:items-center md:space-x-12">
+                    <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                        <div class="relative w-64 h-64 card-3d">
+                            <div class="absolute -inset-2 bg-indigo-100 rounded-2xl transform rotate-3 floating" style="animation-delay: 0.5s;"></div>
+                            <img src="assets/me.png"
+                                 alt="About me"
+                                 class="relative w-full h-full rounded-2xl object-cover border-4 border-white glow" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Who I Am</h3>
+                        <p class="text-gray-600 mb-6">
+                            Highly versatile software engineer with a bachelor's degree in computer science. Expertise in Flutter development and UI/UX design. Skill set includes creating user-friendly applications, collaborating effectively in remote teams, and tackling complex problems. Proficient in Flutter, Python, C++, and Photoshop. Strong communication, teamwork, and time management abilities. Bilingual in English and Arabic for effective communication and timely project delivery.
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            Expertise in Flutter development and UI/UX design. Proficient in Flutter, Python, C++, and Photoshop. Strong communication, teamwork, and time management abilities. Bilingual in English and Arabic for effective communication and timely project delivery.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center p-3 rounded-xl glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                <i class="fas fa-calendar-alt text-indigo-600 mr-3"></i>
+                                <span class="text-gray-700"><strong>Experience:</strong> 3+ Years</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-xl glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                <i class="fas fa-map-marker-alt text-indigo-600 mr-3"></i>
+                                <span class="text-gray-700"><strong>Location:</strong> Egypt, Cairo</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-xl glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                <i class="fas fa-graduation-cap text-indigo-600 mr-3"></i>
+                                <span class="text-gray-700"><strong>Education:</strong> B.Sc Computer Science</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-xl glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                <i class="fas fa-briefcase text-indigo-600 mr-3"></i>
+                                <span class="text-gray-700"><strong>Freelance:</strong> Available</span>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1d9MiTxY9TAMr3w9qBmhvU8CZ_6gukLR3/view?usp=sharing" target="_blank" class="inline-flex items-center px-4 py-2 rounded-xl glass-btn text-indigo-600 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                            Download CV <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My Skills & Expertise</h2>
+                <div class="w-20 h-2 rounded-full mx-auto gradient-flow"></div>
+                <p class="text-gray-600 mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+                    I've mastered a comprehensive set of technologies and methodologies to deliver exceptional mobile applications. From core programming languages to advanced Flutter concepts, here's what I bring to every project.
+                </p>
+            </div>
+
+            <div class="glass-bg rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                <!-- Enhanced floating elements -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-purple-400 opacity-10 floating" style="animation-delay: 1s;"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/3 left-10 w-24 h-24 rounded-full bg-indigo-400 opacity-10 floating" style="animation-delay: 0.5s;"></div>
+
+                <div class="relative z-10">
+                    <!-- Core Technologies -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-center">
+                            <i class="fas fa-star text-indigo-600 mr-3"></i>
+                            Core Technologies
+                            <i class="fas fa-star text-indigo-600 ml-3"></i>
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                            <div class="glass-card p-6 text-center hover:scale-105 transition-transform duration-300">
+                                <img src="https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png"
+                                     alt="Flutter Logo"
+                                     class="w-16 h-16 mx-auto mb-3 object-contain">
+                                <h4 class="font-semibold text-gray-800 mb-2">Flutter</h4>
+                                <p class="text-sm text-gray-600">Cross-platform development</p>
+                            </div>
+                            <div class="glass-card p-6 text-center hover:scale-105 transition-transform duration-300">
+                                <img src="https://dart.dev/assets/shared/dart/icon/64.png"
+                                     alt="Dart Logo"
+                                     class="w-16 h-16 mx-auto mb-3 object-contain">
+                                <h4 class="font-semibold text-gray-800 mb-2">Dart</h4>
+                                <p class="text-sm text-gray-600">Modern programming language</p>
+                            </div>
+                            <div class="glass-card p-6 text-center hover:scale-105 transition-transform duration-300">
+                                <i class="fab fa-python text-4xl text-green-500 mb-3"></i>
+                                <h4 class="font-semibold text-gray-800 mb-2">Python</h4>
+                                <p class="text-sm text-gray-600">Backend & automation</p>
+                            </div>
+                            <div class="glass-card p-6 text-center hover:scale-105 transition-transform duration-300">
+                                <i class="fas fa-code text-4xl text-purple-500 mb-3"></i>
+                                <h4 class="font-semibold text-gray-800 mb-2">C++</h4>
+                                <p class="text-sm text-gray-600">System programming</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Flutter Skills -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-bolt text-indigo-600 mr-3"></i>
+                            Advanced Flutter Expertise
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center p-4 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-architecture text-indigo-600 mr-4 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Clean Architecture</h4>
+                                        <p class="text-sm text-gray-600">SOLID principles & scalable code structure</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-4 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-mobile-alt text-indigo-600 mr-4 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Responsive Design</h4>
+                                        <p class="text-sm text-gray-600">Adaptive layouts for all screen sizes</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-4 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-globe text-indigo-600 mr-4 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Localization (i18n)</h4>
+                                        <p class="text-sm text-gray-600">Multi-language app support</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center p-4 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-magic text-indigo-600 mr-4 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Animations & Motion</h4>
+                                        <p class="text-sm text-gray-600">Smooth, engaging user interactions</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-4 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-fire text-indigo-600 mr-4 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Firebase Integration</h4>
+                                        <p class="text-sm text-gray-600">Backend services & real-time data</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-4 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-tachometer-alt text-indigo-600 mr-4 text-xl"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Performance Optimization</h4>
+                                        <p class="text-sm text-gray-600">Fast, efficient app performance</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- State Management & Tools -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-layer-group text-indigo-600 mr-3"></i>
+                            State Management & Development Tools
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="glass-card p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i class="fas fa-cogs text-indigo-600 mr-2"></i>
+                                    State Management
+                                </h4>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">BLoC Pattern</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-14 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">Provider</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-12 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">GetX</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-10 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i class="fas fa-network-wired text-indigo-600 mr-2"></i>
+                                    Networking & APIs
+                                </h4>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">Dio HTTP Client</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-16 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">RESTful APIs</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-16 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">RPC</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-14 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-6">
+                                <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                    <i class="fas fa-tools text-indigo-600 mr-2"></i>
+                                    Development Tools
+                                </h4>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">Git & GitHub</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-16 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">VS Code</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-16 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                                        <span class="text-sm font-medium">Android Studio</span>
+                                        <div class="w-16 h-2 bg-gray-200 rounded-full">
+                                            <div class="w-16 h-2 bg-indigo-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design & Additional Skills -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-paint-brush text-indigo-600 mr-3"></i>
+                                UI/UX & Design Tools
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center p-3 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fab fa-figma text-2xl text-purple-500 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Figma</h4>
+                                        <p class="text-sm text-gray-600">UI/UX design & prototyping</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-3 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fab fa-adobe text-2xl text-blue-500 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Photoshop</h4>
+                                        <p class="text-sm text-gray-600">Image editing & graphics</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-language text-indigo-600 mr-3"></i>
+                                Languages & Communication
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center p-3 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-flag text-2xl text-green-500 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Arabic</h4>
+                                        <p class="text-sm text-gray-600">Native/Bilingual proficiency</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-3 glass-card hover:shadow-lg transition-all duration-300">
+                                    <i class="fas fa-flag text-2xl text-blue-500 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">English</h4>
+                                        <p class="text-sm text-gray-600">Professional proficiency</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My Projects</h2>
+                <div class="w-20 h-2 rounded-full mx-auto gradient-flow"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">
+                    Here are some of my recent Flutter projects. Each one was carefully crafted to solve specific problems and deliver exceptional user experiences.
+                </p>
+            </div>
+
+            <div class="glass-bg rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                <!-- Floating elements -->
+                <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-indigo-400 opacity-10 floating" style="animation-delay: 1s;"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 2s;"></div>
+
+                <div class="relative z-10">
+                    <!-- Project Filter -->
+                    <div class="flex flex-wrap justify-center mb-16 gap-4">
+                        <button class="px-6 py-3 rounded-full glass-btn glass-btn-primary filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="all">
+                            <i class="fas fa-th-large mr-2"></i>All Projects
+                        </button>
+                        <button class="px-6 py-3 rounded-full glass-btn filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="ui">
+                            <i class="fas fa-paint-brush mr-2"></i>UI/UX Design
+                        </button>
+                        <button class="px-6 py-3 rounded-full glass-btn filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="mobile">
+                            <i class="fas fa-mobile-alt mr-2"></i>Mobile Apps
+                        </button>
+                        <button class="px-6 py-3 rounded-full glass-btn filter-btn font-medium text-sm lg:text-base transition-all duration-300 hover:scale-105" data-filter="inprogress">
+                            <i class="fas fa-clock mr-2"></i>In Progress
+                        </button>
+                    </div>
+
+                    <!-- Projects Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                        <!-- Project 1: Etamin UI -->
+                        <div class="project-card glass-card" data-category="ui">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="assets/etamim/cover.png"
+                                     alt="Etamin UI"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Etamin UI <i class="fas fa-external-link-alt text-xs ml-1"></i></h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                                    <span class="project-tag bg-green-100 text-green-800">UI</span>
+                                </div>
+                                <p class="italic text-gray-200 text-sm mb-1">Medical health record</p>
+                                <p class="text-gray-200 text-sm mb-4">This application provides an easy user interface for patients to record medical conditions and all their history to show them to doctors any time.</p>
+                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project1">View Details</button>
+                            </div>
+                        </div>
+                        <!-- Project 2: Casty UI (UI/UX only) -->
+                        <div class="project-card glass-card" data-category="ui">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="assets/casty/logo.png"
+                                     alt="Casty UI"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Casty UI <i class="fas fa-external-link-alt text-xs ml-1"></i></h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-purple-100 text-purple-800">UI/UX</span>
+                                    <span class="project-tag bg-pink-100 text-pink-800">Design</span>
+                                </div>
+                                <p class="italic text-gray-200 text-sm mb-1">Modern and easy UI</p>
+                                <p class="text-gray-200 text-sm mb-4">The platform provides a valuable resource for media production companies, granting them convenient access to a comprehensive pool of talented individuals eager to showcase their abilities.</p>
+                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project2">View Details</button>
+                            </div>
+                        </div>
+                        <!-- Project 3: Orchida clinic -->
+                        <div class="project-card glass-card" data-category="mobile">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="assets/orchida clinic/logo.png"
+                                     alt="Orchida clinic"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Orchida clinic</h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                                    <span class="project-tag bg-green-100 text-green-800">Health</span>
+                                </div>
+                                <p class="text-gray-200 text-sm mb-4">This app simplifies scheduling and patient care. Doctors can easily create new reservations and update patient medical histories. The app ensures efficient clinic operations with a focus on user-friendly design and strong customer support, enhancing both doctor and patient experiences.</p>
+                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project3">View Details</button>
+                            </div>
+                        </div>
+                        <!-- Project 4: Pinion CRM -->
+                        <div class="project-card glass-card" data-category="mobile">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="assets/pinion crm/logo.png"
+                                     alt="Pinion CRM Thumbnail"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Pinion CRM</h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                                    <span class="project-tag bg-red-100 text-red-800">CRM</span>
+                                </div>
+                                <p class="text-gray-200 text-sm mb-4">Pinion CRM is a flutter application presents a user-friendly customer relationship management application designed to streamline business operations by providing easy access to customer management, financial transactions, inventory tracking, and pricing data. With a modern interface and intuitive navigation, it helps businesses efficiently manage customers, sales, stock, and locations.</p>
+                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project4">View Details</button>
+                            </div>
+                        </div>
+                        <!-- Project 5: Perfect Solution -->
+                        <div class="project-card glass-card" data-category="mobile">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="assets/perfect solution/logo.jpg"
+                                     alt="Perfect Solution Thumbnail"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Perfect Solution</h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                                    <span class="project-tag bg-blue-100 text-blue-800">Odoo</span>
+                                    <span class="project-tag bg-blue-100 text-green-800">ERP</span>
+
+                                </div>
+                                <p class="text-gray-200 text-sm mb-4">A powerful Flutter-based mobile integrated with Odoo ERP via Odoo RPC, featuring secure authentication, real-time data sync, CRUD operations, Optimized with flutter_bloc for performance.</p>
+                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project5">View Details</button>
+                            </div>
+                        </div>
+                        <!-- Project 6: Lotus CRM (in progress) -->
+                        <div class="project-card glass-card" data-category="inprogress">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="assets/loutus/logo.png"
+                                     alt="Lotus CRM"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Lotus CRM</h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                                    <span class="project-tag bg-green-100 text-green-800">Health</span>
+                                    <span class="project-tag bg-yellow-100 text-yellow-800">In Progress</span>
+                                </div>
+                                <p class="text-gray-200 text-sm mb-4">A HIPAA-compliant platform designed to streamline patient care, staff workflows, and hospital operations. Manage medical records, track inventory, automate billing, and coordinate multi-department workflows securely—all through an intuitive interface. <span class="font-bold">Elevate efficiency while prioritizing patient outcomes and compliance. <span class="italic">Transform healthcare management today.</span></span></p>
+                                <button class="view-project-btn px-4 py-2 rounded-lg glass-btn glass-btn-primary text-sm" data-project="project6">View Details</button>
+                            </div>
+                        </div>
+                        <!-- Project 7: Moon academy (in progress) -->
+                        <div class="project-card glass-card" data-category="inprogress">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                     alt="Moon academy"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Moon academy</h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Education</span>
+                                    <span class="project-tag bg-blue-100 text-blue-800">Web</span>
+                                </div>
+                                <p class="text-gray-200 text-sm mb-4">Moon Academy is an educational platform designed to make learning accessible and engaging for a diverse audience. The project focuses on delivering a user-friendly experience, supporting multiple languages, and providing a welcoming environment for users to explore courses and educational content. The platform emphasizes inclusivity, ease of use, and adaptability across various devices.
+                                    <span class="project-tag bg-yellow-100 text-yellow-800">In Progress</span>
+                            </div>
+                        </div>
+                        <!-- Project 8: Ne_angilos (in progress) -->
+                        <div class="project-card glass-card" data-category="inprogress">
+                            <div class="flex justify-center items-center h-full">
+                                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                     alt="Ne_angilos"
+                                     class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="text-xl font-bold text-white mb-2">Ne_angilos</h3>
+                                <div class="flex flex-wrap mb-3">
+                                    <span class="project-tag bg-indigo-100 text-indigo-800">Digital</span>
+                                    <span class="project-tag bg-green-100 text-green-800">Community</span>
+                                </div>
+                                <p class="text-gray-200 text-sm mb-4">Neangilos is a comprehensive digital platform designed to enhance communication, organization, and management among members of educational communities. The application streamlines daily operations and improves engagement among students, educators, and administrators.
+                                    <span class="project-tag bg-yellow-100 text-yellow-800">In Progress</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View More Button -->
+                    <div class="text-center mt-16">
+                        <div class="glass-card p-8 rounded-3xl bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-indigo-900/20 dark:to-cyan-900/20 border-2 border-transparent bg-clip-padding">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-3xl blur opacity-20"></div>
+                                <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6">
+                                    <div class="flex items-center justify-center mb-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
+                                            <i class="fas fa-plus"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Interested in More Projects?</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">I have more exciting projects in my portfolio. Let's discuss how I can help with your next project!</p>
+                                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                        <a href="#contact" class="px-8 py-3 rounded-xl font-medium glass-btn glass-btn-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
+                                            <i class="fas fa-envelope mr-2"></i>Get In Touch
+                                        </a>
+                                        <a href="https://github.com/Georgeamir1" target="_blank" class="px-8 py-3 rounded-xl font-medium glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
+                                            <i class="fab fa-github mr-2"></i>View GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <!-- Project 1 Modal: Etamin -->
+    <div id="project1-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="p-8 ">
+                    <div class="relative h-full">
+                        <div class="image-slider overflow-hidden rounded-lg h-full">
+                            <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                                <img src="assets/etamim/sign in.png" alt="Sign In" class="flex-shrink-0">
+                                <img src="assets/etamim/sign up 9.png" alt="Sign Up" class="flex-shrink-0">
+                                <img src="assets/etamim/Home.png" alt="Home" class="flex-shrink-0">
+                                <img src="assets/etamim/Profile.png" alt="Profile" class="flex-shrink-0">
+                            </div>
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <div class="cover-image-container mb-6">
+                        <img src="assets/etamim/cover.png"
+                             alt="Etamin App"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Etamin</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                        <span class="project-tag bg-green-100 text-green-800">Health</span>
+                        <span class="project-tag bg-blue-100 text-blue-800">Patient Record</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Etamin is a health record application designed with an easy-to-use interface for patients. It allows users to record their medical conditions and easily share this information with their doctors for a comprehensive health overview.
+                    </p>
+                    <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2">
+                        <li>Patient medical record management</li>
+                        <li>Easy input of health conditions</li>
+                        <li>Secure sharing of records with doctors</li>
+                        <li>User-friendly interface</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 2 Modal: Casty UI -->
+    <div id="project2-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="p-8">
+                    <div class="relative h-full">
+                        <div class="image-slider overflow-hidden rounded-lg h-full">
+                            <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                                <img src="assets/casty/1. Spash Screen.png" alt="Splash Screen" class="flex-shrink-0">
+                                <img src="assets/casty/2.2 Create Account - Name.png" alt="Create Account - Name" class="flex-shrink-0">
+                                <img src="assets/casty/2.3 Create Account - Birthdate.png" alt="Create Account - Birthdate" class="flex-shrink-0">
+                                <img src="assets/casty/2.5 Create Account - Select Interest.png" alt="Create Account - Select Interest" class="flex-shrink-0">
+                                <img src="assets/casty/2.6 Create Account - Upload Photo.png" alt="Create Account - Upload Photo" class="flex-shrink-0">
+                                <img src="assets/casty/2.8 Login - Empty State.png" alt="Login - Empty State" class="flex-shrink-0">
+                                <img src="assets/casty/3. Home - Make Friends.png" alt="Home - Make Friends" class="flex-shrink-0">
+                                <img src="assets/casty/3.2 Home - Search Partners (Swipe Right).png" alt="Home - Search Partners (Swipe Right)" class="flex-shrink-0">
+                                <img src="assets/casty/4. Discover.png" alt="Discover" class="flex-shrink-0">
+                                <img src="assets/casty/4.2 Discover - Scroll & Search clicked.png" alt="Discover - Scroll & Search clicked" class="flex-shrink-0">
+                                <img src="assets/casty/4.3 Discover - by Interest v1.png" alt="Discover - by Interest v1" class="flex-shrink-0">
+                                <img src="assets/casty/5.2 Matches.png" alt="Matches" class="flex-shrink-0">
+                                <img src="assets/casty/5.3 - Profile Details v1.png" alt="Profile Details v1" class="flex-shrink-0">
+                                <img src="assets/casty/5.3 - Profile Details v1-1.png" alt="Profile Details v1-1" class="flex-shrink-0">
+                                <img src="assets/casty/6. Messages.png" alt="Messages" class="flex-shrink-0">
+                                <img src="assets/casty/6.4 Text Chat.png" alt="Text Chat" class="flex-shrink-0">
+                                <img src="assets/casty/7. Profile.png" alt="Profile" class="flex-shrink-0">
+                                <img src="assets/casty/7.1 Edit Profile.png" alt="Edit Profile" class="flex-shrink-0">
+                                <img src="assets/casty/location.png" alt="Location" class="flex-shrink-0">
+                                <img src="assets/casty/logo.png" alt="Logo" class="flex-shrink-0">
+                                <img src="assets/casty/Which one are you_.jpg" alt="Which one are you" class="flex-shrink-0">
+                            </div>
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <div class="cover-image-container mb-6">
+                        <img src="assets/casty/logo.png"
+                             alt="Casty UI"
+                             class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Casty UI</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-purple-100 text-purple-800">UI/UX</span>
+                        <span class="project-tag bg-pink-100 text-pink-800">Design</span>
+                        <span class="project-tag bg-yellow-100 text-yellow-800">Modern</span>
+                        <span class="project-tag bg-green-100 text-green-800">Social App</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Casty UI is a modern and easy-to-use user interface developed for a social networking platform. It provides a comprehensive tool for users to connect, discover new friends, and manage their social interactions with an intuitive and beautiful design.
+                    </p>
+                    <h4 class="text-lg font-semibold text-white mb-2">Key Features:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2">
+                        <li>Modern and intuitive design</li>
+                        <li>User authentication and profile creation</li>
+                        <li>Friend discovery and matching system</li>
+                        <li>Real-time messaging and chat</li>
+                        <li>Profile management and customization</li>
+                        <li>Interest-based matching</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 3 Modal: Orchidica Clinic -->
+    <div id="project3-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="p-8">
+                    <div class="relative h-full">
+                        <div class="image-slider overflow-hidden rounded-lg h-full">
+                            <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-30-10-74_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 1" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-30-16-82_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 2" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-30-21-45_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 3" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-30-25-53_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 4" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-30-34-89_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 5" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-31-04-73_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 6" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-31-18-47_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 7" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-31-30-65_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 8" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-31-35-12_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 9" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-31-43-11_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 10" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-31-46-90_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 11" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-32-07-85_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 12" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-32-11-27_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 13" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/Screenshot_2025-07-01-16-32-22-67_e8edcdcabab26f86b5cbb2e8a6c0c5fc.jpg" alt="Screenshot 14" class="flex-shrink-0">
+                                <img src="assets/orchida clinic/logo.png" alt="Logo" class="flex-shrink-0">
+                            </div>
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <div class="cover-image-container mb-6">
+                        <img src="assets/orchida clinic/logo.png"
+                             alt="Orchidica Clinic"
+                             class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Orchidica Clinic</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                        <span class="project-tag bg-green-100 text-green-800">Health</span>
+                        <span class="project-tag bg-blue-100 text-blue-800">Clinic Management</span>
+                        <span class="project-tag bg-purple-100 text-purple-800">Appointments</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Orchidica Clinic is an application that simplifies scheduling and patient care for clinic operations. It ensures efficient clinic operations by providing easy patient medical histories access and improving both doctor and patient experiences through a user-friendly design.
+                    </p>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Key Features:</h4>
+                    <ul class="list-disc pl-5 text-gray-600 mb-6 space-y-2">
+                        <li>Simplified appointment scheduling</li>
+                        <li>Patient medical history access</li>
+                        <li>Efficient clinic operations</li>
+                        <li>Improved doctor-patient experience</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 4 Modal: Pinion CRM -->
+    <div id="project4-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8 flex items-center justify-center">
+                    <div class="image-slider overflow-hidden rounded-lg h-full w-full">
+                        <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-42-08-44_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 1" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-04-55_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 2" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-08-13_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 3" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-13-82_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 4" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-20-01_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 5" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-23-49_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 6" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-40-19.jpg" alt="Screenshot 7" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-43-51-70_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 8" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-44-33-56.jpg" alt="Screenshot 9" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-44-38-91_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 10" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-46-01-03_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 11" class="flex-shrink-0">
+                            <img src="assets/pinion crm/Screenshot_2025-07-02-14-46-18-66_ca26b299811e37e9b2e6500cd45168fc.jpg" alt="Screenshot 12" class="flex-shrink-0">
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 p-8 flex flex-col items-start">
+                    <img src="assets/pinion crm/logo.png" alt="Pinion CRM Logo" class="w-50 h-50 object-contain mb-4 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pinion CRM</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                        <span class="project-tag bg-red-100 text-red-800">CRM</span>
+                        <span class="project-tag bg-yellow-100 text-yellow-800">Business</span>
+                        <span class="project-tag bg-blue-100 text-blue-800">Management</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Pinion CRM is a user-friendly customer relationship management application designed to streamline business operations. It provides easy access to customer data and intuitive navigation to help businesses efficiently manage customers, sales, stock, and locations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 5 Modal: Perfect Solution -->
+    <div id="project5-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8 flex flex-col items-center justify-center">
+                    <div class="image-slider overflow-hidden rounded-lg h-full w-full">
+                        <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-41-22_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 1" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-44-87_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 2" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-47-94_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 3" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-51-96_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 4" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-39-54-72_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 5" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-40-37-63.jpg" alt="Screenshot 6" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-40-53-92.jpg" alt="Screenshot 7" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-41-08-60_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 8" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-41-18-81_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 9" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-41-33-35_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 10" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-41-38-03_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 11" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-41-49-28_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 12" class="flex-shrink-0">
+                            <img src="assets/perfect solution/Screenshot_2025-07-01-16-41-52-79_48309922ccb0e3d8b0ca2447ef022d22.jpg" alt="Screenshot 13" class="flex-shrink-0">
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <img src="assets/perfect solution/logo.jpg" alt="Perfect Solution Logo" class="w-50 h-50 object-contain mb-4 rounded-lg shadow-lg">
+
+                    <h3 class="text-2xl font-bold text-white mb-4">Perfect Solution</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                        <span class="project-tag bg-blue-100 text-blue-800">Odoo</span>
+                        <span class="project-tag bg-blue-100 text-green-800">ERP</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        A powerful Flutter-based mobile integrated with Odoo ERP via Odoo RPC, featuring secure authentication, real-time data sync, CRUD operations, Optimized with flutter_bloc for performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project 6 Modal: Lotus CRM -->
+    <div id="project6-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8 flex items-center justify-center">
+                    <div class="image-slider overflow-hidden rounded-lg h-full">
+                        <div class="slider-container flex transition-transform duration-300 ease-in-out h-full">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-28-11-03_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 1" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-28-14-37_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 2" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-28-49-11_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 3" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-29-08-31_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 4" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-29-10-56_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 5" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-29-20-76_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 6" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-29-28-05_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 7" class="flex-shrink-0">
+                            <img src="assets/loutus/Screenshot_2025-07-01-16-29-34-36_a7f7d834dc217212aff4c30eae69ebcf.jpg" alt="Screenshot 8" class="flex-shrink-0">
+                        </div>
+                        <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-btn glass-btn-primary flex items-center justify-center">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots flex justify-center mt-4 space-x-2">
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot active"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300 dot"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">Lotus CRM</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <img src="assets/loutus/logo.png" alt="Lotus CRM Logo" class="w-45 h-45 object-contain mb-4 rounded-lg shadow-lg">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Flutter</span>
+                        <span class="project-tag bg-green-100 text-green-800">Health</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        A HIPAA-compliant platform designed to streamline patient care, staff workflows, and hospital operations. Manage medical records, track inventory, automate billing, and coordinate multi-department workflows securely—all through an intuitive interface. <span class="font-bold">Elevate efficiency while prioritizing patient outcomes and compliance. <span class="italic">Transform healthcare management today.</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project 7 Modal: Moon academy -->
+    <div id="project7-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Moon academy" class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">Moon academy</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Education</span>
+                        <span class="project-tag bg-blue-100 text-blue-800">Web</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Moon Academy is an educational platform designed to make learning accessible and engaging for a diverse audience. The project focuses on delivering a user-friendly experience, supporting multiple languages, and providing a welcoming environment for users to explore courses and educational content. The platform emphasizes inclusivity, ease of use, and adaptability across various devices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project 8 Modal: Ne_angilos -->
+    <div id="project8-modal" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ne_angilos" class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">Ne_angilos</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="project-tag bg-indigo-100 text-indigo-800">Digital</span>
+                        <span class="project-tag bg-green-100 text-green-800">Community</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Neangilos is a comprehensive digital platform designed to enhance communication, organization, and management among members of educational communities. The application streamlines daily operations and improves engagement among students, educators, and administrators.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My Experience</h2>
+                <div class="w-20 h-2 rounded-full mx-auto gradient-flow"></div>
+            </div>
+
+            <div class="glass-bg rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                <!-- Floating elements -->
+                <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-indigo-400 opacity-10 floating" style="animation-delay: 1s;"></div>
+                <div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 2s;"></div>
+
+                <div class="relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Work Experience -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                                <i class="fas fa-briefcase text-indigo-600 mr-3"></i> Work Experience
+                            </h3>
+
+                            <div class="space-y-8">
+                                <!-- Current Job -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <div class="glass-card p-6 rounded-2xl">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="text-lg font-semibold text-gray-800">Flutter Developer</h4>
+                                            <span class="px-3 py-1 rounded-full text-xs font-medium glass-btn text-indigo-600">Present</span>
+                                        </div>
+                                        <h5 class="text-indigo-600 mb-2">Ideal Systems</h5>
+                                        <p class="text-gray-600 text-sm mb-3">January 2024 - June 2025 | Zagazig, Egypt</p>
+                                        <p class="text-gray-600">
+                                            Developed multiple Flutter applications including Orchida Clinic, Pinion CRM, and Lotus CRM.
+                                            Implemented clean architecture and BLoC pattern for state management.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Previous Job -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <div class="glass-card p-6 rounded-2xl">
+                                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Flutter Developer</h4>
+                                        <h5 class="text-indigo-600 mb-2">Perfect Solution</h5>
+                                        <p class="text-gray-600 text-sm mb-3">January 2023 - January 2024 | Zagazig, Egypt</p>
+                                        <p class="text-gray-600">
+                                            Developed the Perfect Solution Flutter application integrated with Odoo ERP via Odoo RPC.
+                                            Implemented secure authentication, real-time data sync, and CRUD operations.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- First Job -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <div class="glass-card p-6 rounded-2xl">
+                                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Flutter Developer & UI/UX</h4>
+                                        <h5 class="text-indigo-600 mb-2">Egcoco</h5>
+                                        <p class="text-gray-600 text-sm mb-3">June 2022 - December 2022 | Helwan, Egypt</p>
+                                        <p class="text-gray-600">
+                                            Designed and developed Casty UI mobile application with responsive UIs.
+                                            Collaborated with designers to implement pixel-perfect interfaces.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Freelance -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <div class="glass-card p-6 rounded-2xl">
+                                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Freelance Flutter Developer</h4>
+                                        <h5 class="text-indigo-600 mb-2">Independent</h5>
+                                        <p class="text-gray-600 text-sm mb-3">Ongoing | Remote</p>
+                                        <p class="text-gray-600">
+                                            Working on various freelance projects including Moon Academy and Ne_angilos.
+                                            Providing end-to-end mobile development solutions for diverse clients.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+                                <i class="fas fa-graduation-cap text-indigo-600 mr-3"></i> Education
+                            </h3>
+
+                            <div class="space-y-8">
+                                <!-- University -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <div class="glass-card p-6 rounded-2xl">
+                                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Bachelor in Computer Science</h4>
+                                        <h5 class="text-indigo-600 mb-2">Zagazig University</h5>
+                                        <p class="text-gray-600 text-sm mb-3">2019 - 2023</p>
+                                        <p class="text-gray-600">
+                                            Graduated with honors in Computer Science. Specialized in software engineering
+                                            and mobile application development.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Certifications -->
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">
+                                        <i class="fas fa-circle"></i>
+                                    </div>
+                                    <div class="glass-card p-6 rounded-2xl">
+                                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Flutter Development Bootcamp</h4>
+                                        <h5 class="text-indigo-600 mb-2">Udemy</h5>
+                                        <p class="text-gray-600 text-sm mb-3">2022</p>
+                                        <p class="text-gray-600">
+                                            Completed comprehensive Flutter development course covering Dart programming,
+                                            state management, and Firebase integration.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-2 rounded-full mx-auto gradient-flow"></div>
+            </div>
+
+            <div class="glass-bg rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                <!-- Floating elements -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-purple-400 opacity-10 floating" style="animation-delay: 1s;"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-cyan-400 opacity-10 floating" style="animation-delay: 2s;"></div>
+
+                <div class="relative z-10">
+                    <!-- Contact Info Header -->
+                    <div class="text-center mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Let's Connect</h3>
+                        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                            I'm always open to discussing new opportunities, collaborations, or just having a friendly chat about technology and development.
+                        </p>
+                    </div>
+
+                    <!-- Contact Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+                        <!-- Email Card -->
+                        <div class="group">
+                            <div class="glass-card p-6 rounded-2xl bg-gradient-to-br from-indigo-50 to-cyan-50 dark:from-indigo-900/20 dark:to-cyan-900/20 border-2 border-transparent hover:border-indigo-200 dark:hover:border-indigo-700 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <h4 class="text-gray-800 dark:text-white font-semibold mb-2">Email Me</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Drop me a line anytime</p>
+                                    <a href="mailto:georgeamirformall@gmail.com" class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium text-sm hover:underline transition-colors duration-300">
+                                        georgeamirformall@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Card -->
+                        <div class="group">
+                            <div class="glass-card p-6 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border-2 border-transparent hover:border-green-200 dark:hover:border-green-700 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-400 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <h4 class="text-gray-800 dark:text-white font-semibold mb-2">WhatsApp</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Quick chat or call</p>
+                                    <a href="https://wa.me/201068780012" target="_blank" class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 font-medium text-sm hover:underline transition-colors duration-300">
+                                        +20 106 878 0012
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="group">
+                            <div class="glass-card p-6 rounded-2xl bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 border-2 border-transparent hover:border-cyan-200 dark:hover:border-cyan-700 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-400 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <h4 class="text-gray-800 dark:text-white font-semibold mb-2">Call Me</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Let's talk directly</p>
+                                    <a href="tel:+201068780012" class="text-cyan-600 hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-300 font-medium text-sm hover:underline transition-colors duration-300">
+                                        +20 106 878 0012
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- GitHub Card -->
+                        <div class="group">
+                            <div class="glass-card p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900/20 dark:to-gray-800/20 border-2 border-transparent hover:border-gray-200 dark:hover:border-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                                <div class="flex flex-col items-center text-center">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                    <h4 class="text-gray-800 dark:text-white font-semibold mb-2">GitHub</h4>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">View my code</p>
+                                    <a href="https://github.com/Georgeamir1" target="_blank" class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 font-medium text-sm hover:underline transition-colors duration-300">
+                                        Follow me
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="text-center">
+                        <div class="glass-card p-8 rounded-3xl bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-indigo-900/20 dark:to-cyan-900/20 border-2 border-transparent">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-3xl blur opacity-20"></div>
+                                <div class="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6">
+                                    <div class="flex items-center justify-center mb-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
+                                            <i class="fas fa-handshake"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Ready to Work Together?</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">I'm currently available for new projects and opportunities. Let's create something amazing together!</p>
+                                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                        <a href="mailto:georgeamirformall@gmail.com" class="px-8 py-3 rounded-xl font-medium glass-btn glass-btn-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
+                                            <i class="fas fa-envelope mr-2"></i>Send Email
+                                        </a>
+                                        <a href="https://wa.me/201068780012" target="_blank" class="px-8 py-3 rounded-xl font-medium glass-btn hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center">
+                                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp Me
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gradient-to-r from-indigo-500 to-cyan-500 relative overflow-hidden">
+        <div class="absolute inset-0 bg-white opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col items-center justify-center">
+                <div class="flex items-center mb-6">
+                    <div class="glass-icon w-12 h-12 flex items-center justify-center mr-3">
+                        <img src="assets/logo/logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span class="text-xl font-bold text-white">George<span class="text-indigo-200">Amir</span></span>
+                </div>
+                <div class="flex space-x-6 mb-8">
+                    <a href="mailto:amirgeorge841@gmail.com" class="glass-icon w-10 h-10 flex items-center justify-center text-white hover:bg-white hover:text-indigo-600">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+201068780012" class="glass-icon w-10 h-10 flex items-center justify-center text-white hover:bg-white hover:text-indigo-600">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+
+                    <a href="https://github.com/Georgeamir1" target="_blank" class="glass-icon w-10 h-10 flex items-center justify-center text-white hover:bg-white hover:text-indigo-600">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <p class="text-white text-center mb-6">
+                    © 2023 George Amir. All rights reserved.
+                </p>
+                <a href="#home" class="glass-icon w-10 h-10 flex items-center justify-center text-white hover:bg-white hover:text-indigo-600">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set theme to always be dark
+        document.documentElement.setAttribute('data-theme', 'dark');
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        // Project modal functionality
+        document.querySelectorAll('.view-project-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                document.getElementById(`${projectId}-modal`).style.display = 'block';
+            });
+        });
+
+        document.querySelectorAll('.close-modal').forEach(span => {
+            span.addEventListener('click', function() {
+                this.closest('.project-modal').style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', function(event) {
+            document.querySelectorAll('.project-modal').forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Project filtering functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filterValue = this.getAttribute('data-filter');
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('glass-btn-primary'));
+                this.classList.add('glass-btn-primary');
+
+                document.querySelectorAll('.project-card').forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+        // Intersection Observer for scroll animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'skills') {
+                        animateSkillBars();
+                    }
+                    entry.target.classList.add('animate-fadeIn');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles-container';
+            document.body.appendChild(particlesContainer);
+            const particleCount = 5; // Reduced from 20 to 5 for performance
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 10;
+                const color = `rgba(${Math.floor(Math.random() * 56 + 200)}, ${Math.floor(Math.random() * 56 + 200)}, ${Math.floor(Math.random() * 56 + 200)}, ${Math.random() * 0.5 + 0.1})`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.background = color;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        // Initialize particles
+        window.addEventListener('load', createParticles);
+        // Contact form feedback
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // Let the form submit normally, but show a thank you message after redirect
+                setTimeout(() => {
+                    document.getElementById('form-message').classList.remove('hidden');
+                }, 100);
+            });
+        }
+
+        function initSlider(modal) {
+            const slider = modal.querySelector('.slider-container');
+            const prevBtn = modal.querySelector('.slider-prev');
+            const nextBtn = modal.querySelector('.slider-next');
+            const dots = modal.querySelectorAll('.dot');
+            let currentSlide = 0;
+            const slideCount = slider.children.length;
+
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            // Remove previous listeners by replacing buttons and dots
+            prevBtn?.replaceWith(prevBtn.cloneNode(true));
+            nextBtn?.replaceWith(nextBtn.cloneNode(true));
+            modal.querySelectorAll('.dot').forEach(dot => dot.replaceWith(dot.cloneNode(true)));
+
+            // Re-select after cloning
+            const newPrevBtn = modal.querySelector('.slider-prev');
+            const newNextBtn = modal.querySelector('.slider-next');
+            const newDots = modal.querySelectorAll('.dot');
+
+            newPrevBtn?.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+            });
+
+            newNextBtn?.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            });
+
+            newDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+
+            // Always reset to first slide when modal opens
+            currentSlide = 0;
+            updateSlider();
+        }
+
+        // When opening a modal, initialize its slider
+        document.querySelectorAll('.view-project-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const modal = document.getElementById(`${projectId}-modal`);
+                if (modal) {
+                    modal.style.display = 'block';
+                    // Only initialize slider if it exists in this modal
+                    if (modal.querySelector('.slider-container')) {
+                        initSlider(modal);
+                    }
+                }
+            });
+        });
+        
+        // Splash Screen functionality
+        function initSplashScreen() {
+            const splashScreen = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            // Show main content after splash screen animation
+            setTimeout(() => {
+                splashScreen.classList.add('hidden');
+                mainContent.classList.add('visible');
+            }, 3000); // 3 seconds splash screen duration
+        }
+        
+        // Initialize splash screen
+        document.addEventListener('DOMContentLoaded', initSplashScreen);
+    </script>
+</div> <!-- End Main Content -->
+</body>
+</html>
