@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Modern React-based Flutter Developer Portfolio",
   "main": "index.js",
+  "description": "Modern portfolio website for George Amir built with React, TypeScript, and Tailwind CSS",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,6 +18,14 @@
     "url": "git+https://github.com/Georgeamir1/georgeamir1.github.io.git"
   },
   "keywords": ["portfolio", "flutter", "react", "typescript"],
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "flutter",
+    "developer",
+    "tailwindcss"
+  ],
   "author": "George Amir",
   "license": "ISC",
   "bugs": {
@@ -29,7 +38,28 @@
     "lucide-react": "^0.546.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "framer-motion": "^12.23.24",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/drei": "^9.88.11",
+    "three": "^0.158.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-form": "^0.0.3",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "react-hot-toast": "^2.4.1",
+    "swiper": "^10.3.1",
+    "lottie-react": "^2.4.0",
+    "react-intersection-observer": "^9.5.3",
+    "react-parallax-tilt": "^1.7.171",
+    "react-type-animation": "^3.2.0",
+    "react-countup": "^6.5.0",
+    "react-icons": "^4.12.0",
     "react-router-dom": "^7.9.4",
+    "lucide-react": "^0.546.0",
+    "clsx": "^2.1.1",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
@@ -42,5 +72,10 @@
     "typescript": "^5.9.3",
     "vite": "^7.1.11",
     "gh-pages": "^6.1.0"
+    "gh-pages": "^6.1.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4"
   }
 }

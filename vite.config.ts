@@ -9,6 +9,8 @@ export default defineConfig({
       jsxRuntime: 'automatic',
     })
   ],
+  plugins: [react()],
+  base: './', // Important for GitHub Pages
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -35,6 +37,20 @@ export default defineConfig({
       loader: {
         '.js': 'jsx',
         '.ts': 'tsx',
+      },
+    },
+  },
+  server: {
+    port: 3000,
+    open: true,
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
       },
     },
   },
